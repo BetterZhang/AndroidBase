@@ -1,14 +1,17 @@
 apply plugin: 'com.android.application'
 
+def config  = rootProject.ext.configurations
+def libs    = rootProject.ext.libraries
+
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.0"
+    compileSdkVersion       config.compileSdkVersion
+    buildToolsVersion       config.buildToolsVersion
     defaultConfig {
-        applicationId "com.betterzhang.androidbase"
-        minSdkVersion 19
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        applicationId       config.applicationId
+        minSdkVersion       config.minSdkVersion
+        targetSdkVersion    config.targetSdkVersion
+        versionCode         config.versionCode
+        versionName         config.versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -24,7 +27,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:26.+'
+    compile "com.android.support:appcompat-v7:${libs.SUPPORT_VERSION}"
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }

@@ -1,0 +1,19 @@
+/*
+
+ */
+
+ext {
+
+    configurations = [applicationId        : "com.betterzhang.androidbase",
+                      compileSdkVersion    : 26,
+                      buildToolsVersion    : "26.0.0",
+                      minSdkVersion        : 19,
+                      targetSdkVersion     : 26,
+                      versionCode          : 1,
+                      versionName          : "1.0"]
+
+
+    libraries = [SUPPORT_VERSION     : '26.+']
+
+
+}
