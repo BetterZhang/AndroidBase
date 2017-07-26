@@ -17,7 +17,11 @@ ext {
                       common_versionName   : "1.0"]
 
 
-    libraries = [SUPPORT_VERSION     : '26.+']
+    libraries = [SUPPORT_VERSION     : '26.+',
+                 RETROFIT_VERSION    : "2.3.0",
+                 RXJAVA_VERSION      : "2.1.0",
+                 RXANDROID_VERSION   : "2.0.1"]
+
 
 
 }
