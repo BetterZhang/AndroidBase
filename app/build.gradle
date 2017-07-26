@@ -5,6 +5,10 @@ def config  = rootProject.ext.configurations
 // 依赖库
 def libs    = rootProject.ext.libraries
 
+def releaseTime() {
+    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+}
+
 android {
     compileSdkVersion       config.compileSdkVersion
     buildToolsVersion       config.buildToolsVersion
