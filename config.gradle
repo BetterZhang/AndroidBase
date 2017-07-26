@@ -1,5 +1,5 @@
 /*
-
+ * 所有 Module 的共享变量，这里修改了，全部地方都能修改
  */
 
 ext {
@@ -9,8 +9,12 @@ ext {
                       buildToolsVersion    : "26.0.0",
                       minSdkVersion        : 19,
                       targetSdkVersion     : 26,
-                      versionCode          : 1,
-                      versionName          : "1.0"]
+                      app_versionCode      : 1,
+                      app_versionName      : "1.0",
+
+                      // common模块
+                      common_versionCode   : 1,
+                      common_versionName   : "1.0"]
 
 
     libraries = [SUPPORT_VERSION     : '26.+']

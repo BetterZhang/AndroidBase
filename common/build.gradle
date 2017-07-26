@@ -1,4 +1,4 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 // 配置
 def config  = rootProject.ext.configurations
@@ -8,13 +8,15 @@ def libs    = rootProject.ext.libraries
 android {
     compileSdkVersion       config.compileSdkVersion
     buildToolsVersion       config.buildToolsVersion
+
     defaultConfig {
-        applicationId       config.applicationId
         minSdkVersion       config.minSdkVersion
         targetSdkVersion    config.targetSdkVersion
-        versionCode         config.app_versionCode
-        versionName         config.app_versionName
+        versionCode         config.common_versionCode
+        versionName         config.common_versionName
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -25,9 +27,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':common')
+    compile "com.android.support:appcompat-v7:${libs.SUPPORT_VERSION}"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
 }
