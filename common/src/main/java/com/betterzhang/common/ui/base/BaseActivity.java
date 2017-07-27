@@ -28,7 +28,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mContext = this;
 
         initView();
-        loadData();
+        loadData(savedInstanceState);
         addListener();
     }
 
@@ -48,7 +48,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 加载数据
      */
-    protected void loadData() {
+    protected void loadData(Bundle savedInstanceState) {
 
     }
 

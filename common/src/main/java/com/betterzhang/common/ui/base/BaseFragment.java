@@ -57,7 +57,7 @@ public abstract class BaseFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
-        loadData();
+        loadData(savedInstanceState);
         addListener();
     }
 
@@ -77,7 +77,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 加载数据
      */
-    protected void loadData() {
+    protected void loadData(Bundle savedInstanceState) {
 
     }
 
