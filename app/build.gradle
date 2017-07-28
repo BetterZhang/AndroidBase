@@ -1,23 +1,19 @@
 apply plugin: 'com.android.application'
-
-// 配置
-def config  = rootProject.ext.configurations
-// 依赖库
-def libs    = rootProject.ext.libraries
+apply plugin: 'me.tatarka.retrolambda'
 
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
 }
 
 android {
-    compileSdkVersion       config.compileSdkVersion
-    buildToolsVersion       config.buildToolsVersion
+    compileSdkVersion       rootProject.ext.android.compileSdkVersion
+    buildToolsVersion       rootProject.ext.android.buildToolsVersion
     defaultConfig {
-        applicationId       config.applicationId
-        minSdkVersion       config.minSdkVersion
-        targetSdkVersion    config.targetSdkVersion
-        versionCode         config.app_versionCode
-        versionName         config.app_versionName
+        applicationId       rootProject.ext.android.applicationId
+        minSdkVersion       rootProject.ext.android.minSdkVersion
+        targetSdkVersion    rootProject.ext.android.targetSdkVersion
+        versionCode         rootProject.ext.android.app_versionCode
+        versionName         rootProject.ext.android.app_versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -25,6 +21,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+    compileOptions {
+        sourceCompatibility rootProject.ext.android.javaVersion
+        targetCompatibility rootProject.ext.android.javaVersion
     }
 }
 
