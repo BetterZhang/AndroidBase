@@ -5,18 +5,18 @@
 ext {
 
     android = [
-            applicationId        : "com.betterzhang.androidbase",
-            compileSdkVersion    : 25,
-            buildToolsVersion    : "25.0.1",
-            minSdkVersion        : 19,
-            targetSdkVersion     : 25,
-            app_versionCode      : 1,
-            app_versionName      : "1.0",
-            javaVersion          : JavaVersion.VERSION_1_8,
+            applicationId           : "com.betterzhang.androidbase",
+            compileSdkVersion       : 25,
+            buildToolsVersion       : "25.0.1",
+            minSdkVersion           : 19,
+            targetSdkVersion        : 25,
+            app_versionCode         : 1,
+            app_versionName         : "1.0",
+            javaVersion             : JavaVersion.VERSION_1_8,
 
             // common模块
-            common_versionCode   : 1,
-            common_versionName   : "1.0"
+            common_versionCode      : 1,
+            common_versionName      : "1.0"
 
             // 其他子Module模块
     ]
@@ -33,7 +33,8 @@ ext {
             'rxjava'                : 'io.reactivex.rxjava2:rxjava:2.1.2',
             'rxandroid'             : 'io.reactivex.rxjava2:rxandroid:2.0.1',
             'recyclerViewAdapter'   : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.25',
-            'glide'                 : 'com.github.bumptech.glide:glide:4.0.0-RC1'
+            'glide'                 : 'com.github.bumptech.glide:glide:4.0.0-RC1',
+            'bottom-bar'            : 'com.roughike:bottom-bar:2.3.1'
     ]
 
 }
