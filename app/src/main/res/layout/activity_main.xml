@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.betterzhang.androidbase.MainActivity">
+    tools:context="com.betterzhang.androidbase.ui.main.MainActivity">
 
     <TextView
         android:layout_width="match_parent"
