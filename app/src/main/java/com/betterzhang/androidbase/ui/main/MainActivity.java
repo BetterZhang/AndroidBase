@@ -7,7 +7,7 @@ import com.betterzhang.androidbase.R;
 /**
  * Created by Android Studio.
  * Author : zhangzhongqiang
- * Email  : zhangzhongqiang@jsdttec.com
+ * Email  : betterzhang.dev@gmail.com
  * Time   : 2017/07/28 上午 9:52
  * Desc   : MainActivity
  */

@@ -11,7 +11,7 @@ import android.widget.Toast;
 /**
  * Created by Android Studio.
  * Author : zhangzhongqiang
- * Email  : zhangzhongqiang@jsdttec.com
+ * Email  : betterzhang.dev@gmail.com
  * Time   : 2017/07/26 下午 2:04
  * Desc   : Activity基类
  */
@@ -24,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getContentViewId());
+        setContentView(getLayoutResId());
         mContext = this;
 
         initView();
@@ -36,7 +36,7 @@ public abstract class BaseActivity extends AppCompatActivity {
      * 设置页面布局layout
      * @return
      */
-    protected abstract int getContentViewId();
+    protected abstract int getLayoutResId();
 
     /**
      * 绑定页面UI

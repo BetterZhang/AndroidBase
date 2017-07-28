@@ -15,7 +15,7 @@ import android.widget.Toast;
 /**
  * Created by Android Studio.
  * Author : zhangzhongqiang
- * Email  : zhangzhongqiang@jsdttec.com
+ * Email  : betterzhang.dev@gmail.com
  * Time   : 2017/07/26 下午 2:17
  * Desc   : Fragment基类
  */
@@ -42,7 +42,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        int id = getContentViewId();
+        int id = getLayoutResId();
         View view = inflater.inflate(id, container, false);
         return view;
     }
@@ -65,7 +65,7 @@ public abstract class BaseFragment extends Fragment {
      * 设置页面布局layout
      * @return
      */
-    protected abstract int getContentViewId();
+    protected abstract int getLayoutResId();
 
     /**
      * 绑定页面UI
