@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 程序主色调 -->
+    <color name="common_app_main_color">#FFFFFF</color>
+    <color name="common_background">#ECECEC</color>
+    <color name="common_item_background">#FFFFFF</color>
+
+    <!-- 下拉刷新时，颜色值 -->
+    <color name="common_swiperefresh_1">#ffc4201f</color>
+    <color name="common_swiperefresh_2">#ffffbb33</color>
+    <color name="common_swiperefresh_3">#ff00ddff</color>
+    <color name="common_swiperefresh_4">#ffaa66cc</color>
+
+    <!-- 界面所有Font字体的颜色配置 -->
+    <!-- 标题及标题（未选）的颜色 -->
+    <color name="common_font_title">#222222</color>
+    <!-- 正文主体 -->
+    <color name="common_font_content">#222222</color>
+
+</resources>

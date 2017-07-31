@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/toolbar_title_with_sure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:paddingRight="@dimen/common_text_padding_normal"
+        tools:text="确定"
+        android:textColor="@color/common_font_title"
+        android:textSize="@dimen/common_font_size_title" />
+
+    <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:singleLine="true"
+        tools:text="我的App"
+        android:textColor="@color/common_font_title"
+        android:textSize="@dimen/common_font_size_title" />
+
+</RelativeLayout>
