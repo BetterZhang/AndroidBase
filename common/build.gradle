@@ -51,4 +51,7 @@ dependencies {
 
     // bottom-bar
     compile rootProject.ext.dependencies['bottom-bar']
+
+    // StatusBar
+    compile rootProject.ext.dependencies['statusbarutil']
 }
