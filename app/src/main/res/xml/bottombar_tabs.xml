@@ -1,0 +1,23 @@
+<tabs>
+
+    <tab
+        id="@+id/tab_home_page"
+        icon="@drawable/selector_tab_homepage"
+        title="首页" />
+
+    <tab
+        id="@+id/tab_home_market"
+        icon="@drawable/selector_tab_market"
+        title="行情" />
+
+    <tab
+        id="@+id/tab_home_trade"
+        icon="@drawable/selector_tab_trade"
+        title="交易" />
+
+    <tab
+        id="@+id/tab_home_personal"
+        icon="@drawable/selector_tab_personal"
+        title="我的" />
+
+</tabs>

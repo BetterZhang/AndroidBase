@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
+import butterknife.ButterKnife;
 
 /**
  * Created by Android Studio.
@@ -42,6 +43,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         mDialog.setIndeterminate(true);
         mDialog.setMessage("请稍后...");
         mDialog.setCanceledOnTouchOutside(true);
+
+        ButterKnife.bind(this);
 
         initView();
         loadData(savedInstanceState);

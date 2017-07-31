@@ -1,8 +1,12 @@
 package com.betterzhang.androidbase.ui.main;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.support.annotation.IdRes;
+import android.widget.FrameLayout;
 import com.betterzhang.androidbase.R;
+import com.betterzhang.common.ui.base.BaseActivity;
+import com.roughike.bottombar.BottomBar;
+import com.roughike.bottombar.OnTabSelectListener;
+import butterknife.BindView;
 
 /**
  * Created by Android Studio.
@@ -12,11 +16,43 @@ import com.betterzhang.androidbase.R;
  * Desc   : MainActivity
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.bottomBar)
+    BottomBar bottomBar;
+    @BindView(R.id.content)
+    FrameLayout content;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutResId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void addListener() {
+        super.addListener();
+        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
+            @Override
+            public void onTabSelected(@IdRes int tabId) {
+                String msg = "";
+                switch (tabId) {
+                    case R.id.tab_home_page:
+                        msg = "首页";
+                        break;
+                    case R.id.tab_home_market:
+                        msg = "行情";
+                        break;
+                    case R.id.tab_home_trade:
+                        msg = "交易";
+                        break;
+                    case R.id.tab_home_personal:
+                        msg = "我的";
+                        break;
+                    default:
+                        break;
+                }
+                showShortToast(msg);
+            }
+        });
     }
 }

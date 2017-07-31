@@ -16,6 +16,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Android Studio.
@@ -32,6 +34,8 @@ public abstract class BaseFragment extends Fragment {
     protected Toast mToast;
 
     protected ToolbarHelper mToolbarHelper;
+
+    protected Unbinder unbinder;
 
     @Override
     public void onAttach(Context context) {
@@ -51,6 +55,7 @@ public abstract class BaseFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
         int id = getLayoutResId();
         View view = inflater.inflate(id, container, false);
+        unbinder = ButterKnife.bind(this, view);
         return view;
     }
 
@@ -94,6 +99,12 @@ public abstract class BaseFragment extends Fragment {
      */
     protected void addListener() {
 
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     // ************** Toolbar Setting start **************
