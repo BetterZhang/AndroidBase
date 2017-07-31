@@ -3,21 +3,29 @@
     <tab
         id="@+id/tab_home_page"
         icon="@drawable/selector_tab_homepage"
-        title="首页" />
+        title="@string/tab_homepage_text"
+        inActiveColor="@color/common_tab_text_unselected"
+        activeColor="@color/common_tab_text_selected" />
 
     <tab
         id="@+id/tab_home_market"
         icon="@drawable/selector_tab_market"
-        title="行情" />
+        title="@string/tab_market_text"
+        inActiveColor="@color/common_tab_text_unselected"
+        activeColor="@color/common_tab_text_selected" />
 
     <tab
         id="@+id/tab_home_trade"
         icon="@drawable/selector_tab_trade"
-        title="交易" />
+        title="@string/tab_trade_text"
+        inActiveColor="@color/common_tab_text_unselected"
+        activeColor="@color/common_tab_text_selected" />
 
     <tab
         id="@+id/tab_home_personal"
         icon="@drawable/selector_tab_personal"
-        title="我的" />
+        title="@string/tab_personal_text"
+        inActiveColor="@color/common_tab_text_unselected"
+        activeColor="@color/common_tab_text_selected" />
 
 </tabs>

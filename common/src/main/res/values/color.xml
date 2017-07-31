@@ -18,4 +18,7 @@
     <!-- 正文主体 -->
     <color name="common_font_content">#222222</color>
 
+    <color name="common_tab_text_unselected">#999999</color>
+    <color name="common_tab_text_selected">#bd132b</color>
+
 </resources>

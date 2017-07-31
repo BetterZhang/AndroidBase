@@ -1,3 +1,11 @@
 <resources>
+
     <string name="app_name">AndroidBase</string>
+
+    <!-- 底部Tab导航栏 -->
+    <string name="tab_homepage_text">首页</string>
+    <string name="tab_market_text">行情</string>
+    <string name="tab_trade_text">交易</string>
+    <string name="tab_personal_text">我的</string>
+
 </resources>

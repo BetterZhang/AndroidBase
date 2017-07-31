@@ -1,11 +1,9 @@
 package com.betterzhang.androidbase.ui.main;
 
-import android.support.annotation.IdRes;
 import android.widget.FrameLayout;
 import com.betterzhang.androidbase.R;
 import com.betterzhang.common.ui.base.BaseActivity;
 import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnTabSelectListener;
 import butterknife.BindView;
 
 /**
@@ -31,28 +29,25 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void addListener() {
         super.addListener();
-        bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
-            @Override
-            public void onTabSelected(@IdRes int tabId) {
-                String msg = "";
-                switch (tabId) {
-                    case R.id.tab_home_page:
-                        msg = "首页";
-                        break;
-                    case R.id.tab_home_market:
-                        msg = "行情";
-                        break;
-                    case R.id.tab_home_trade:
-                        msg = "交易";
-                        break;
-                    case R.id.tab_home_personal:
-                        msg = "我的";
-                        break;
-                    default:
-                        break;
-                }
-                showShortToast(msg);
+        bottomBar.setOnTabSelectListener(tabId -> {
+            String msg = "";
+            switch (tabId) {
+                case R.id.tab_home_page:
+                    msg = "首页";
+                    break;
+                case R.id.tab_home_market:
+                    msg = "行情";
+                    break;
+                case R.id.tab_home_trade:
+                    msg = "交易";
+                    break;
+                case R.id.tab_home_personal:
+                    msg = "我的";
+                    break;
+                default:
+                    break;
             }
+            showShortToast(msg);
         });
     }
 }
