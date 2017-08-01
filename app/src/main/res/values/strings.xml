@@ -1,6 +1,10 @@
 <resources>
 
+    <!-- App -->
     <string name="app_name">AndroidBase</string>
+    <string name="text_exit_app">再按一次退出程序</string>
+    <string name="text_confirm">确定</string>
+    <string name="text_cancel">取消</string>
 
     <!-- 底部Tab导航栏 -->
     <string name="tab_homepage_text">首页</string>
