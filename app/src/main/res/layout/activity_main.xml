@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/common_background"
     tools:context="com.betterzhang.androidbase.ui.main.MainActivity">
 
     <FrameLayout
@@ -17,7 +18,7 @@
     <com.roughike.bottombar.BottomBar
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:elevation="4dp"
         app:bb_tabXmlResource="@xml/bottombar_tabs" />
