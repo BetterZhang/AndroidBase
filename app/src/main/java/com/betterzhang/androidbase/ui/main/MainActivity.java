@@ -1,6 +1,8 @@
 package com.betterzhang.androidbase.ui.main;
 
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.View;
@@ -8,6 +10,9 @@ import android.widget.FrameLayout;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.betterzhang.androidbase.R;
+import com.betterzhang.androidbase.ui.market.HomeMarketFragment;
+import com.betterzhang.androidbase.ui.personal.HomePersonalFragment;
+import com.betterzhang.androidbase.ui.trade.HomeTradeFragment;
 import com.betterzhang.common.ui.base.BaseActivity;
 import butterknife.BindView;
 
@@ -25,6 +30,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     BottomNavigationBar bottomBar;
     @BindView(R.id.content)
     FrameLayout content;
+
+    private HomePageFragment mPageFragment;
+    private HomeMarketFragment mMarketFragment;
+    private HomeTradeFragment mTradeFragment;
+    private HomePersonalFragment mPersonalFragment;
 
     private long exitTime = 0;
 
@@ -52,6 +62,17 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
                  .setInActiveColor(R.color.common_tab_text_unselected)
                  .setFirstSelectedPosition(0)
                  .initialise();
+
+        setDefaultFragment();
+    }
+
+    // 设置默认的fragment
+    private void setDefaultFragment() {
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        mPageFragment = new HomePageFragment();
+        transaction.replace(R.id.content, mPageFragment);
+        transaction.commit();
     }
 
     @Override
@@ -97,24 +118,37 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
 
     @Override
     public void onTabSelected(int position) {
-        String msg = "";
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
         switch (position) {
             case 0:
-                msg = "首页";
+                if (mPageFragment == null) {
+                    mPageFragment = new HomePageFragment();
+                }
+                transaction.replace(R.id.content, mPageFragment);
                 break;
             case 1:
-                msg = "行情";
+                if (mMarketFragment == null) {
+                    mMarketFragment = new HomeMarketFragment();
+                }
+                transaction.replace(R.id.content, mMarketFragment);
                 break;
             case 2:
-                msg = "交易";
+                if (mTradeFragment == null) {
+                    mTradeFragment = new HomeTradeFragment();
+                }
+                transaction.replace(R.id.content, mTradeFragment);
                 break;
             case 3:
-                msg = "我的";
+                if (mPersonalFragment == null) {
+                    mPersonalFragment = new HomePersonalFragment();
+                }
+                transaction.replace(R.id.content, mPersonalFragment);
                 break;
             default:
                 break;
         }
-        showShortToast(msg);
+        transaction.commit();
     }
 
     @Override
