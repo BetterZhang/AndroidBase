@@ -13,9 +13,13 @@
     <dimen name="common_page_margin">10dp</dimen>
     <dimen name="common_page_padding">10dp</dimen>
 
-    <dimen name="common_text_padding">20dp</dimen>
-    <dimen name="common_text_padding_normal">10dp</dimen>
+    <dimen name="common_item_margin_small">10dp</dimen>
+    <dimen name="common_item_margin_normal">20dp</dimen>
+    <dimen name="common_item_margin_big">30dp</dimen>
+
     <dimen name="common_text_padding_small">5dp</dimen>
+    <dimen name="common_text_padding_normal">10dp</dimen>
+    <dimen name="common_text_padding_big">20dp</dimen>
 
     <!--分隔线的宽度-->
     <dimen name="common_line_width">2px</dimen>

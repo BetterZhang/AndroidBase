@@ -1,7 +1,9 @@
 package com.betterzhang.androidbase.ui.personal;
 
 import com.betterzhang.androidbase.R;
+import com.betterzhang.androidbase.ui.login.LoginActivity;
 import com.betterzhang.common.ui.base.BaseFragment;
+import butterknife.OnClick;
 
 /**
  * Created by Android Studio.
@@ -16,6 +18,11 @@ public class HomePersonalFragment extends BaseFragment {
     @Override
     protected int getLayoutResId() {
         return R.layout.fragment_home_personal;
+    }
+
+    @OnClick(R.id.btn)
+    public void onClick() {
+        startAnimActivity(LoginActivity.class);
     }
 
 }

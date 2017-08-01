@@ -9,6 +9,9 @@
     <color name="common_background">#ECECEC</color>
     <color name="common_item_background">#FFFFFF</color>
 
+    <color name="common_text">#bd132b</color>
+    <color name="common_font_gray">#999999</color>
+
     <!-- 下拉刷新时，颜色值 -->
     <color name="common_swiperefresh_1">#ffc4201f</color>
     <color name="common_swiperefresh_2">#ffffbb33</color>
