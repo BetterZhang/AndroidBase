@@ -35,8 +35,8 @@ dependencies {
     })
     compile project(':common')
 
-    // bottom-bar
-    compile rootProject.ext.dependencies['bottom-bar']
+    // bottom-navigation-bar
+    compile rootProject.ext.dependencies['bottom-navigation-bar']
 
     // butterknife
     compile rootProject.ext.dependencies['butterknife']

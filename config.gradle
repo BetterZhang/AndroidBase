@@ -34,10 +34,10 @@ ext {
             'rxandroid'             : 'io.reactivex.rxjava2:rxandroid:2.0.1',
             'recyclerViewAdapter'   : 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.25',
             'glide'                 : 'com.github.bumptech.glide:glide:4.0.0-RC1',
-            'bottom-bar'            : 'com.roughike:bottom-bar:2.3.1',
             'statusbarutil'         : 'com.jaeger.statusbarutil:library:1.4.0',
             'butterknife'           : 'com.jakewharton:butterknife:8.7.0',
-            'butterknife-compiler'  : 'com.jakewharton:butterknife-compiler:8.7.0'
+            'butterknife-compiler'  : 'com.jakewharton:butterknife-compiler:8.7.0',
+            'bottom-navigation-bar' : 'com.ashokvarma.android:bottom-navigation-bar:2.0.2'
     ]
 
 }
