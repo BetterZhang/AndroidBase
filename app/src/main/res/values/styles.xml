@@ -9,4 +9,10 @@
         <item name="android:textColor">@color/common_font_content</item>
     </style>
 
+    <style name="MyEditText">
+        <item name="android:textSize">14sp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/common_font_gray</item>
+    </style>
+
 </resources>

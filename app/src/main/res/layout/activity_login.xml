@@ -32,7 +32,8 @@
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入普洱交易账号"
+                android:hint="@string/login_account_hint_text"
+                style="@style/MyEditText"
                 android:inputType="number"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -40,12 +41,14 @@
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:passwordToggleEnabled="true">
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/common_text">
 
             <android.support.v7.widget.AppCompatEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="请输入您的登录密码"
+                android:hint="@string/login_password_hint_text"
+                style="@style/MyEditText"
                 android:inputType="textPassword"/>
 
         </android.support.design.widget.TextInputLayout>
@@ -55,7 +58,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_item_margin_big"
-            android:text="登录"/>
+            android:text="@string/login_btn_text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/common_font_size_title"
+            android:background="@color/common_text"/>
 
     </LinearLayout>
 
