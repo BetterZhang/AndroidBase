@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/common_text</item>
         <item name="colorAccent">@color/common_text</item>
         <item name="android:textColor">@color/common_font_content</item>
+        <item name="android:windowBackground">@color/common_background</item>
     </style>
 
     <style name="MyEditText">
