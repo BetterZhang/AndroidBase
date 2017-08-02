@@ -62,7 +62,7 @@
             android:text="@string/login_btn_text"
             android:textColor="@color/white"
             android:textSize="@dimen/common_font_size_title"
-            android:background="@color/common_text"/>
+            android:background="@drawable/button_ripple"/>
 
     </LinearLayout>
 

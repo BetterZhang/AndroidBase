@@ -27,4 +27,7 @@
     <color name="common_tab_text_unselected">#999999</color>
     <color name="common_tab_text_selected">#bd132b</color>
 
+    <color name="common_btn_bg">@color/common_text</color>
+    <color name="common_btn_ripple">#FF4050</color>
+
 </resources>

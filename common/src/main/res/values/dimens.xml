@@ -25,4 +25,7 @@
     <dimen name="common_line_width">2px</dimen>
     <dimen name="common_line_height">2px</dimen>
 
+    <!-- 圆角 -->
+    <dimen name="common_corners_radius">5dp</dimen>
+
 </resources>
