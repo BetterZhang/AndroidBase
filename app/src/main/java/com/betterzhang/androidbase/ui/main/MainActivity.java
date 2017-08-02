@@ -7,6 +7,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.betterzhang.androidbase.R;
@@ -86,15 +87,13 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
         if (KeyEvent.KEYCODE_BACK == keyCode) {
             // 判断是否在两秒之内连续点击返回键，是则退出，否则不退出
             if (System.currentTimeMillis() - exitTime > 2000) {
-                Snackbar.make(content, getString(R.string.text_exit_app), Snackbar.LENGTH_SHORT)
-                        .setAction(getString(R.string.text_cancel), new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                exitTime = 0;
-                            }
-                        })
-                        .setActionTextColor(ContextCompat.getColor(this, R.color.common_tab_text_selected))
-                        .show();
+                Snackbar snackbar = Snackbar.make(content, getString(R.string.text_exit_app), Snackbar.LENGTH_SHORT);
+                snackbar.setAction(getString(R.string.text_cancel), v -> exitTime = 0)
+                        .setActionTextColor(ContextCompat.getColor(this, R.color.common_tab_text_selected));
+                View snakebarView = snackbar.getView();
+                TextView textView = (TextView) snakebarView.findViewById(android.support.design.R.id.snackbar_text);
+                textView.setTextColor(getResources().getColor(R.color.white));
+                snackbar.show();
                 // 将系统当前的时间赋值给exitTime
                 exitTime = System.currentTimeMillis();
             } else {
