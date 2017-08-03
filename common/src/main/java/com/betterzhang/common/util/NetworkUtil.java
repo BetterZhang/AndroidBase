@@ -22,11 +22,11 @@ import java.util.Enumeration;
 
 public class NetworkUtil {
 
-    public static int NET_CNNT_BAIDU_OK = 1;        // NetworkAvailable
-    public static int NET_CNNT_BAIDU_TIMEOUT = 2;   // no NetworkAvailable
-    public static int NET_NOT_PREPARE = 3;          // Net no ready
-    public static int NET_ERROR = 4;                //net error
-    private static int TIMEOUT = 3000;              // TIMEOUT
+    public static int NET_CNNT_BAIDU_OK = 1;        // Network Available
+    public static int NET_CNNT_BAIDU_TIMEOUT = 2;   // No NetworkAvailable
+    public static int NET_NOT_PREPARE = 3;          // Net not ready
+    public static int NET_ERROR = 4;                // Net Rrror
+    private static int TIMEOUT = 3000;              // Timeout
 
 
     /**
