@@ -40,6 +40,9 @@ dependencies {
     compile rootProject.ext.dependencies['retrofit']
     compile rootProject.ext.dependencies['converter-gson']
 
+    // logging-interceptor
+    compile rootProject.ext.dependencies['logging-interceptor']
+
     // RxJava
     compile rootProject.ext.dependencies['rxjava']
     compile rootProject.ext.dependencies['rxandroid']
