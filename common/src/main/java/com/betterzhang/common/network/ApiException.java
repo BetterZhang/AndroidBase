@@ -10,18 +10,18 @@ package com.betterzhang.common.network;
 
 public class ApiException extends RuntimeException {
 
-    public static final int USER_NOT_EXIST = 100;
-    public static final int WRONG_PASSWORD = 101;
+    public static final String USER_NOT_EXIST = "1001";
+    public static final String WRONG_PASSWORD = "1002";
 
     public ApiException(String detailMessage) {
         super(detailMessage);
     }
 
-    public ApiException(int resultCode) {
-        this.getApiExceptionMessage(resultCode);
+    public ApiException(String resultCode, String resultMsg) {
+        this.getApiExceptionMessage(resultCode, resultMsg);
     }
 
-    private String getApiExceptionMessage(int code) {
+    private String getApiExceptionMessage(String code, String msg) {
         String message = "";
         switch (code) {
             case USER_NOT_EXIST:
@@ -31,7 +31,7 @@ public class ApiException extends RuntimeException {
                 message = "密码错误";
                 break;
             default:
-                message = "未知错误";
+                message = msg;
                 break;
         }
         return message;

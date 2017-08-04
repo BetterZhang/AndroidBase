@@ -12,6 +12,8 @@ import com.google.gson.Gson;
 
 public class HttpResult<T> {
 
+    public static final String SUCCESS_CODE = "0";
+
     // 返回的状态码
     private String code;
     // 返回的消息
@@ -45,6 +47,13 @@ public class HttpResult<T> {
 
     public String getBodyToString() {
         return new Gson().toJson(body);
+    }
+
+    public boolean isSuccess() {
+        if (this.code.equals(SUCCESS_CODE))
+            return true;
+        else
+            return false;
     }
 
 }
