@@ -38,7 +38,7 @@ ext {
             'butterknife'           : 'com.jakewharton:butterknife:8.7.0',
             'butterknife-compiler'  : 'com.jakewharton:butterknife-compiler:8.7.0',
             'bottom-navigation-bar' : 'com.ashokvarma.android:bottom-navigation-bar:2.0.2',
-            'logging-interceptor'   : 'com.squareup.okhttp3:logging-interceptor:3.4.1'
+            'logging-interceptor'   : 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     ]
 
 }

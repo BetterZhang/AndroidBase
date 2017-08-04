@@ -27,7 +27,7 @@ import okio.Buffer;
  * Author : zhangzhongqiang
  * Email  : betterzhang.dev@gmail.com
  * Time   : 2017/08/03 下午 4:31
- * Desc   : 错误处理
+ * Desc   : Connection
  */
 public class Connection {
 

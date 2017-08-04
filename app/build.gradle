@@ -8,6 +8,7 @@ def releaseTime() {
 android {
     compileSdkVersion       rootProject.ext.android.compileSdkVersion
     buildToolsVersion       rootProject.ext.android.buildToolsVersion
+
     defaultConfig {
         applicationId       rootProject.ext.android.applicationId
         minSdkVersion       rootProject.ext.android.minSdkVersion
@@ -16,12 +17,36 @@ android {
         versionName         rootProject.ext.android.app_versionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
-        release {
+        debug {
+            buildConfigField("boolean", "LOG_DEBUG", "true")
+            applicationIdSuffix '.debug'
+            versionNameSuffix '-debug'
             minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+        }
+        release {
+            buildConfigField("boolean", "LOG_DEBUG", "false")
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
     compileOptions {
         sourceCompatibility rootProject.ext.android.javaVersion
         targetCompatibility rootProject.ext.android.javaVersion
