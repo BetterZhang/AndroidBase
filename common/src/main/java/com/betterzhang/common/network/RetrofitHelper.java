@@ -1,5 +1,6 @@
 package com.betterzhang.common.network;
 
+import com.betterzhang.common.BuildConfig;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -44,7 +45,11 @@ public class RetrofitHelper {
      */
     private static void initOkHttpClient() {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        if (BuildConfig.DEBUG) {
+            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        } else {
+            interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
+        }
         if (httpClient == null) {
             synchronized (RetrofitHelper.class) {
                 if (httpClient == null) {
