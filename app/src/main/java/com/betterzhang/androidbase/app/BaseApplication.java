@@ -1,4 +1,4 @@
-package com.betterzhang.androidbase;
+package com.betterzhang.androidbase.app;
 
 import android.app.Application;
 import android.content.Context;
