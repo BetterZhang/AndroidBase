@@ -53,6 +53,7 @@ dependencies {
 
     // glide
     compile rootProject.ext.dependencies['glide']
+    annotationProcessor rootProject.ext.dependencies['glide-compiler']
 
     // StatusBar
     compile rootProject.ext.dependencies['statusbarutil']
