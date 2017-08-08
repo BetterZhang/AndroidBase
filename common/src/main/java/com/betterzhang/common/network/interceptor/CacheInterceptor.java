@@ -17,11 +17,11 @@ import okhttp3.Response;
  * Desc   : 缓存拦截器
  */
 
-public class CacheIntercepter implements Interceptor {
+public class CacheInterceptor implements Interceptor {
 
     private Context context;
 
-    public CacheIntercepter(Context context) {
+    public CacheInterceptor(Context context) {
         this.context = context;
     }
 

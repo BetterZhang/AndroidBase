@@ -21,6 +21,10 @@ public class ApiException extends RuntimeException {
         this.getApiExceptionMessage(resultCode, resultMsg);
     }
 
+    public ApiException(Throwable throwable) {
+        super(throwable);
+    }
+
     private String getApiExceptionMessage(String code, String msg) {
         String message = "";
         switch (code) {
