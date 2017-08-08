@@ -22,6 +22,7 @@ public class RxHelper {
 
     /**
      * 统一线程处理
+     *
      * @param <T>
      * @return
      */
@@ -35,6 +36,12 @@ public class RxHelper {
         };
     }
 
+    /**
+     * 统一结果处理
+     *
+     * @param <T>
+     * @return
+     */
     public static <T> ObservableTransformer<HttpResult<T>, T> handleResult() {
         return new ObservableTransformer<HttpResult<T>, T>() {
             @Override
@@ -57,6 +64,7 @@ public class RxHelper {
 
     /**
      * 生成Observable
+     *
      * @param data
      * @param <T>
      * @return
