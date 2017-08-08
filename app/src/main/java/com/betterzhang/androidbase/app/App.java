@@ -1,7 +1,7 @@
 package com.betterzhang.androidbase.app;
 
-import android.app.Application;
 import android.content.Context;
+import com.betterzhang.common.app.BaseApplication;
 
 /**
  * Created by Android Studio.
@@ -11,7 +11,7 @@ import android.content.Context;
  * Desc   : BaseApplication
  */
 
-public class BaseApplication extends Application {
+public class App extends BaseApplication {
 
     private static Context mContext;
 
