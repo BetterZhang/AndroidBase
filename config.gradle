@@ -14,9 +14,13 @@ ext {
             app_versionName         : "1.0",
             javaVersion             : JavaVersion.VERSION_1_8,
 
-            // common模块
+            // common module
             common_versionCode      : 1,
-            common_versionName      : "1.0"
+            common_versionName      : "1.0",
+
+            // puer module
+            puer_versionCode        : 1,
+            puer_versionName        : "1.0"
 
             // 其他子Module模块
     ]

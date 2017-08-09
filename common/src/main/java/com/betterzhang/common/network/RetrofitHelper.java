@@ -32,12 +32,12 @@ public class RetrofitHelper {
         return instance;
     }
 
-    public <T> T createApi(Class<T> clazz, String baseUrl, Interceptor interceptor, boolean cacheFlag) {
+    public <T> T createApi(Class<T> clazz, String baseUrl, Interceptor headerInterceptor, boolean cacheFlag) {
         Retrofit.Builder builder = new Retrofit.Builder();
         if (cacheFlag)
-            builder.client(OkHttpManager.getInstance(interceptor).getCacheOkHttp());
+            builder.client(OkHttpManager.getInstance(headerInterceptor).getCacheOkHttp());
         else
-            builder.client(OkHttpManager.getInstance(interceptor).getOkHttp());
+            builder.client(OkHttpManager.getInstance(headerInterceptor).getOkHttp());
 
         Retrofit retrofit = builder.baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

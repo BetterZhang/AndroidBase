@@ -58,11 +58,10 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile project(':common')
+    compile project(':puer')
 
     // bottom-navigation-bar
     compile rootProject.ext.dependencies['bottom-navigation-bar']
-
     // butterknife
     compile rootProject.ext.dependencies['butterknife']
     annotationProcessor rootProject.ext.dependencies['butterknife-compiler']

@@ -24,7 +24,7 @@ public class OkHttpManager {
     private static final int WRITE_TIMEOUT = 20;
     private static final int READ_TIMEOUT = 20;
 
-    public OkHttpManager(Interceptor interceptor) {
+    public OkHttpManager(Interceptor headerInterceptor) {
 //        mOkHttpBuilder = new OkHttpClient.Builder()
 //                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
 //                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
@@ -32,12 +32,12 @@ public class OkHttpManager {
 //                .retryOnConnectionFailure(true)
 //                // 明文Http与比较新的Https
 //                .connectionSpecs(Arrays.asList(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS));
-        mOkHttpBuilder = Connection.getUnsafeOkHttpClient(interceptor);
+        mOkHttpBuilder = Connection.getUnsafeOkHttpClient(headerInterceptor);
     }
 
-    public static OkHttpManager getInstance(Interceptor interceptor) {
+    public static OkHttpManager getInstance(Interceptor headerInterceptor) {
         if (instance == null) {
-            instance = new OkHttpManager(interceptor);
+            instance = new OkHttpManager(headerInterceptor);
         }
         return instance;
     }
