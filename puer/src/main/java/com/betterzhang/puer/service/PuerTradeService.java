@@ -1,13 +1,9 @@
-package com.betterzhang.androidbase.service;
+package com.betterzhang.puer.service;
 
-import com.betterzhang.androidbase.domain.PuerUserVo;
-import com.betterzhang.common.network.HttpResult;
 import com.betterzhang.common.network.RetrofitHelper;
 import com.betterzhang.common.network.RxHelper;
-import com.betterzhang.common.network.SubscribeHelper;
 import java.io.IOException;
 import java.util.HashMap;
-import io.reactivex.annotations.NonNull;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -37,13 +33,7 @@ public class PuerTradeService {
 
     public void puerLogin(HashMap<String, String> params) {
         PuerTradeApi api = RetrofitHelper.getInstance().createApi(PuerTradeApi.class, PuerTradeApi.URL_PUER_TRADE, new PuerHeaderInterceptor(), false);
-        api.puerLogin(params).compose(RxHelper.rxSchedulerHelper())
-                .subscribe(new SubscribeHelper<HttpResult<PuerUserVo>>() {
-                    @Override
-                    public void onNext(@NonNull HttpResult<PuerUserVo> result) {
-                        super.onNext(result);
-                    }
-                });
+        api.puerLogin(params).compose(RxHelper.rxSchedulerHelper());
     }
 
     /**

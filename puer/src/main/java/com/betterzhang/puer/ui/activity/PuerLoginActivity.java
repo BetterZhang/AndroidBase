@@ -1,9 +1,10 @@
-package com.betterzhang.androidbase.ui.login;
+package com.betterzhang.puer.ui.activity;
 
 import android.support.v7.widget.AppCompatEditText;
-import com.betterzhang.androidbase.R;
-import com.betterzhang.androidbase.service.PuerTradeService;
+import com.betterzhang.puer.R2;
 import com.betterzhang.common.ui.base.BaseActivity;
+import com.betterzhang.puer.R;
+import com.betterzhang.puer.service.PuerTradeService;
 import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -16,11 +17,11 @@ import butterknife.OnClick;
  * Desc   : 登录页面
  */
 
-public class LoginActivity extends BaseActivity {
+public class PuerLoginActivity extends BaseActivity {
 
-    @BindView(R.id.et_account)
+    @BindView(R2.id.et_account)
     AppCompatEditText et_account;
-    @BindView(R.id.et_password)
+    @BindView(R2.id.et_password)
     AppCompatEditText et_password;
 
     private String mAccount;
@@ -37,7 +38,7 @@ public class LoginActivity extends BaseActivity {
         initToolbar("登录", true);
     }
 
-    @OnClick(R.id.btn_login)
+    @OnClick(R2.id.btn_login)
     public void onClick() {
         mAccount = et_account.getText().toString();
         mPassword = et_password.getText().toString();

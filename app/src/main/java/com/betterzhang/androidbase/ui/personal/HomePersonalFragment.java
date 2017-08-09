@@ -1,8 +1,8 @@
 package com.betterzhang.androidbase.ui.personal;
 
 import com.betterzhang.androidbase.R;
-import com.betterzhang.androidbase.ui.login.LoginActivity;
 import com.betterzhang.common.ui.base.BaseFragment;
+import com.betterzhang.puer.ui.activity.PuerLoginActivity;
 import butterknife.OnClick;
 
 /**
@@ -22,7 +22,7 @@ public class HomePersonalFragment extends BaseFragment {
 
     @OnClick(R.id.btn)
     public void onClick() {
-        startAnimActivity(LoginActivity.class);
+        startAnimActivity(PuerLoginActivity.class);
     }
 
 }

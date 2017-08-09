@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.betterzhang.androidbase.ui.login.LoginActivity">
+    tools:context=".ui.activity.PuerLoginActivity">
 
     <include layout="@layout/layout_toolbar" />
 
@@ -34,7 +34,7 @@
                 android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_account_hint_text"
+                android:hint="@string/puer_login_account_hint_text"
                 style="@style/MyEditText"
                 android:inputType="number"/>
 
@@ -50,7 +50,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/login_password_hint_text"
+                android:hint="@string/puer_login_password_hint_text"
                 style="@style/MyEditText"
                 android:inputType="textPassword"/>
 
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/common_item_margin_big"
-            android:text="@string/login_btn_text"
+            android:text="@string/puer_login_btn_text"
             android:textColor="@color/white"
             android:textSize="@dimen/common_font_size_title"
             android:background="@drawable/button_ripple"/>

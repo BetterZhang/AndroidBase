@@ -1,4 +1,6 @@
-package com.betterzhang.androidbase.domain;
+package com.betterzhang.puer.domain;
+
+import java.io.Serializable;
 
 /**
  * Created by Android Studio.
@@ -8,7 +10,7 @@ package com.betterzhang.androidbase.domain;
  * Desc   : PuerUserVo
  */
 
-public class PuerUserVo {
+public class PuerUserVo implements Serializable {
 
     private String error_no;
 

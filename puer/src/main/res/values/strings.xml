@@ -1,3 +1,10 @@
 <resources>
+
     <string name="app_name">puer</string>
+
+    <!-- 登录页面 -->
+    <string name="puer_login_account_hint_text">请输入普洱交易账号</string>
+    <string name="puer_login_password_hint_text">请输入您的登录密码</string>
+    <string name="puer_login_btn_text">登 录</string>
+
 </resources>

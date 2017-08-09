@@ -1,6 +1,5 @@
-package com.betterzhang.androidbase.service;
+package com.betterzhang.puer.service;
 
-import com.betterzhang.androidbase.domain.PuerUserVo;
 import com.betterzhang.common.network.HttpResult;
 import java.util.HashMap;
 import io.reactivex.Observable;
@@ -25,6 +24,6 @@ public interface PuerTradeApi {
      * @return
      */
     @POST("/puerapi/v2/account/loginv2")
-    Observable<HttpResult<PuerUserVo>> puerLogin(@Body HashMap<String, String> params);
+    Observable<HttpResult> puerLogin(@Body HashMap<String, String> params);
 
 }
