@@ -22,19 +22,21 @@ public class OkHttpManager {
     private static OkHttpManager instance;
     private final OkHttpClient.Builder mOkHttpBuilder;
 
-    private static final int CONNECTTIMEOUT = 10000;
-    private static final int READTIMEOUT = 10000;
+    private static final int CONNECT_TIMEOUT = 30;
+    private static final int WRITE_TIMEOUT = 20;
+    private static final int READ_TIMEOUT = 20;
 
     public OkHttpManager() {
         mOkHttpBuilder = new OkHttpClient.Builder()
-                .connectTimeout(CONNECTTIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(READTIMEOUT, TimeUnit.SECONDS)
+                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
                 .retryOnConnectionFailure(true)
                 // 明文Http与比较新的Https
                 .connectionSpecs(Arrays.asList(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS));
     }
 
-    public OkHttpManager getInstance() {
+    public static OkHttpManager getInstance() {
         if (instance == null) {
             instance = new OkHttpManager();
         }

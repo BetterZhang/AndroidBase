@@ -1,6 +1,5 @@
 package com.betterzhang.common.network;
 
-
 import java.net.ConnectException;
 import java.net.SocketException;
 import io.reactivex.Observer;

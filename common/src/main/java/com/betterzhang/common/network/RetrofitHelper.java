@@ -1,15 +1,5 @@
 package com.betterzhang.common.network;
 
-import com.betterzhang.common.BuildConfig;
-import java.io.File;
-import java.io.IOException;
-import java.util.concurrent.TimeUnit;
-import okhttp3.Cache;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,64 +14,35 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitHelper {
 
-    private static OkHttpClient httpClient;
+    private static RetrofitHelper instance = null;
 
-    static {
-        initOkHttpClient();
+    private RetrofitHelper() {
+
     }
 
-    private static <T> T createApi(Class<T> clazz, String baseUrl) {
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(baseUrl)
-                .client(httpClient)
+    public static synchronized RetrofitHelper getInstance() {
+        if (instance == null) {
+            synchronized (RetrofitHelper.class) {
+                if (instance == null) {
+                    instance = new RetrofitHelper();
+                }
+            }
+        }
+        return instance;
+    }
+
+    private <T> T createApi(Class<T> clazz, String baseUrl, boolean cacheFlag) {
+        Retrofit.Builder builder = new Retrofit.Builder();
+        if (cacheFlag)
+            builder.client(OkHttpManager.getInstance().getCacheOkHttp());
+        else
+            builder.client(OkHttpManager.getInstance().getOkHttp());
+
+        Retrofit retrofit = builder.baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         return retrofit.create(clazz);
-    }
-
-    /**
-     * 初始化OkHttpClient，设置缓存，设置超时时间，设置打印日志，设置User-Agent拦截器
-     */
-    private static void initOkHttpClient() {
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-        if (BuildConfig.DEBUG) {
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-        } else {
-            interceptor.setLevel(HttpLoggingInterceptor.Level.NONE);
-        }
-        if (httpClient == null) {
-            synchronized (RetrofitHelper.class) {
-                if (httpClient == null) {
-                    // 设置http缓存
-                    Cache cache = new Cache(new File("", "HttpCache"), 1024 * 1024 * 10);
-                    httpClient = new OkHttpClient.Builder()
-                            .cache(cache)
-                            .addInterceptor(interceptor)
-                            .retryOnConnectionFailure(true)
-                            .connectTimeout(30, TimeUnit.SECONDS)
-                            .writeTimeout(20, TimeUnit.SECONDS)
-                            .readTimeout(20, TimeUnit.SECONDS)
-                            .addInterceptor(new UserAgentInterceptor())
-                            .build();
-                }
-            }
-        }
-    }
-
-    /**
-     * 添加User-Agent拦截器
-     */
-    private static class UserAgentInterceptor implements Interceptor {
-        @Override
-        public Response intercept(Chain chain) throws IOException {
-            Request originalRequest = chain.request();
-            Request requestWithUserAgent = originalRequest.newBuilder()
-                    .removeHeader("User-Agent")
-                    .addHeader("User-Agent", "")
-                    .build();
-            return chain.proceed(requestWithUserAgent);
-        }
     }
 
 }
