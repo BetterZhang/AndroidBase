@@ -1,5 +1,6 @@
 package com.betterzhang.common.network;
 
+import okhttp3.Interceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -31,12 +32,12 @@ public class RetrofitHelper {
         return instance;
     }
 
-    private <T> T createApi(Class<T> clazz, String baseUrl, boolean cacheFlag) {
+    public <T> T createApi(Class<T> clazz, String baseUrl, Interceptor interceptor, boolean cacheFlag) {
         Retrofit.Builder builder = new Retrofit.Builder();
         if (cacheFlag)
-            builder.client(OkHttpManager.getInstance().getCacheOkHttp());
+            builder.client(OkHttpManager.getInstance(interceptor).getCacheOkHttp());
         else
-            builder.client(OkHttpManager.getInstance().getOkHttp());
+            builder.client(OkHttpManager.getInstance(interceptor).getOkHttp());
 
         Retrofit retrofit = builder.baseUrl(baseUrl)
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())

@@ -3,10 +3,8 @@ package com.betterzhang.common.network;
 import com.betterzhang.common.app.BaseApplication;
 import com.betterzhang.common.network.interceptor.CacheInterceptor;
 import com.betterzhang.common.util.FileUtil;
-import java.util.Arrays;
-import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
-import okhttp3.ConnectionSpec;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 
 /**
@@ -26,19 +24,20 @@ public class OkHttpManager {
     private static final int WRITE_TIMEOUT = 20;
     private static final int READ_TIMEOUT = 20;
 
-    public OkHttpManager() {
-        mOkHttpBuilder = new OkHttpClient.Builder()
-                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
-                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
-                .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
-                .retryOnConnectionFailure(true)
-                // 明文Http与比较新的Https
-                .connectionSpecs(Arrays.asList(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS));
+    public OkHttpManager(Interceptor interceptor) {
+//        mOkHttpBuilder = new OkHttpClient.Builder()
+//                .connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS)
+//                .writeTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS)
+//                .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+//                .retryOnConnectionFailure(true)
+//                // 明文Http与比较新的Https
+//                .connectionSpecs(Arrays.asList(ConnectionSpec.CLEARTEXT, ConnectionSpec.MODERN_TLS));
+        mOkHttpBuilder = Connection.getUnsafeOkHttpClient(interceptor);
     }
 
-    public static OkHttpManager getInstance() {
+    public static OkHttpManager getInstance(Interceptor interceptor) {
         if (instance == null) {
-            instance = new OkHttpManager();
+            instance = new OkHttpManager(interceptor);
         }
         return instance;
     }

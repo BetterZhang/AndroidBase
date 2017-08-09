@@ -31,6 +31,7 @@
             android:layout_marginTop="@dimen/common_item_margin_normal">
 
             <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_account"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_account_hint_text"
@@ -46,6 +47,7 @@
             app:passwordToggleTint="@color/common_text">
 
             <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/login_password_hint_text"

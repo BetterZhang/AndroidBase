@@ -31,12 +31,15 @@ import okio.Buffer;
  */
 public class Connection {
 
+    private static final int CONNECT_TIMEOUT = 30;
+    private static final int WRITE_TIMEOUT = 20;
+    private static final int READ_TIMEOUT = 20;
+
     static Collection<? extends Certificate> dzInoutCert;
 
-    public static OkHttpClient getUnsafeOkHttpClient(Interceptor interceptor) {
-        OkHttpClient okHttpClient = null;
+    public static OkHttpClient.Builder getUnsafeOkHttpClient(Interceptor interceptor) {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
         try {
-
             X509TrustManager trustManager;
             SSLSocketFactory sslSocketFactory;
             // Create a trust manager that does not validate certificate chains
@@ -48,23 +51,20 @@ public class Connection {
             HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
             logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-            OkHttpClient.Builder builder = new OkHttpClient.Builder();
-
-            builder.connectTimeout(60, TimeUnit.SECONDS);
-            builder.readTimeout(60, TimeUnit.SECONDS);
-            builder.writeTimeout(60, TimeUnit.SECONDS);
+            builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
+            builder.readTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
+            builder.writeTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
             builder.sslSocketFactory(sslSocketFactory, trustManager);
-            builder.interceptors().add(interceptor);
-            builder.interceptors().add(logInterceptor);
+            builder.addInterceptor(logInterceptor);
+            builder.addInterceptor(interceptor);
+            builder.retryOnConnectionFailure(true);
             builder.hostnameVerifier(new HostnameVerifier() {
                 @Override
                 public boolean verify(String hostname, SSLSession session) {
                     return true;
                 }
-            }).build();
-            okHttpClient = builder.build();
-
-            return okHttpClient;
+            });
+            return builder;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
