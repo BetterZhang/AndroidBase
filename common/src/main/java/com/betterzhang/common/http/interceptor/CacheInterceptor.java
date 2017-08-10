@@ -40,16 +40,19 @@ public class CacheInterceptor implements Interceptor {
 
         Response response = chain.proceed(request);
         if (NetworkUtil.isNetworkAvailable(context)) {
+            int maxAge = 60;    // 在线缓存在1分钟内可读取
             response = response.newBuilder()
                     .removeHeader("Pragma")
-                    .addHeader("Cache-Control", "public,max-age=10")
+                    .removeHeader("Cache-Control")
+                    .addHeader("Cache-Control", "public, max-age=" + maxAge)
                     .build();
             Log.d("response", "有网");
         } else {
-            long maxage = 60 * 60 * 24 *4;
+            long maxStale = 60 * 60 * 24 * 4;  // 离线时缓存保存4周
             response = response.newBuilder()
                     .removeHeader("Pragma")
-                    .addHeader("Cache-Control", "public,only-if-cache,max-stale=" + maxage)
+                    .removeHeader("Cache-Control")
+                    .addHeader("Cache-Control", "public, only-if-cached, max-stale=" + maxStale)
                     .build();
             Log.d("response", "无网");
         }
