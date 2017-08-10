@@ -1,7 +1,10 @@
 package com.betterzhang.puer.service;
 
 import com.betterzhang.common.http.HttpResult;
+import com.betterzhang.puer.domain.PuerUserVo;
+
 import java.util.HashMap;
+
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -24,6 +27,6 @@ public interface PuerTradeApi {
      * @return
      */
     @POST("/puerapi/v2/account/loginv2")
-    Observable<HttpResult> puerLogin(@Body HashMap<String, String> params);
+    Observable<HttpResult<PuerUserVo>> puerLogin(@Body HashMap<String, String> params);
 
 }

@@ -62,6 +62,7 @@ dependencies {
 
     // bottom-navigation-bar
     compile rootProject.ext.dependencies['bottom-navigation-bar']
+
     // butterknife
     compile rootProject.ext.dependencies['butterknife']
     annotationProcessor rootProject.ext.dependencies['butterknife-compiler']
