@@ -1,7 +1,6 @@
 package com.betterzhang.puer.ui.activity;
 
 import android.support.v7.widget.AppCompatEditText;
-
 import com.betterzhang.common.ui.base.BaseActivity;
 import com.betterzhang.puer.R;
 import com.betterzhang.puer.R2;
@@ -47,7 +46,6 @@ public class PuerLoginActivity extends BaseActivity {
         params.put("user_id", mAccount);
         params.put("password", mPassword);
         PuerTradeService.getInstance().puerLogin(params);
-        showShortToast("aaa");
     }
 
 }

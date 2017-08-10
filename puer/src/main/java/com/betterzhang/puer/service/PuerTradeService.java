@@ -3,10 +3,8 @@ package com.betterzhang.puer.service;
 import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.common.http.RetrofitHelper;
 import com.betterzhang.puer.domain.PuerUserVo;
-
 import java.io.IOException;
 import java.util.HashMap;
-
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
