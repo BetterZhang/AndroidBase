@@ -13,12 +13,18 @@ import com.betterzhang.common.app.BaseApplication;
 
 public class App extends BaseApplication {
 
+    private static App instance;
     private static Context mContext;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        instance = this;
         mContext = this.getApplicationContext();
+    }
+
+    public static App getInstance() {
+        return instance;
     }
 
     public static Context getContext() {
