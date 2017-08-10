@@ -21,7 +21,7 @@ public class App extends BaseApplication {
         mContext = this.getApplicationContext();
     }
 
-    public static Context getCurrentAppContext() {
+    public static Context getContext() {
         return mContext;
     }
 }

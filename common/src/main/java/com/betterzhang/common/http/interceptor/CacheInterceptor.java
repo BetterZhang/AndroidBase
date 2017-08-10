@@ -1,4 +1,4 @@
-package com.betterzhang.common.network.interceptor;
+package com.betterzhang.common.http.interceptor;
 
 import android.content.Context;
 import android.util.Log;

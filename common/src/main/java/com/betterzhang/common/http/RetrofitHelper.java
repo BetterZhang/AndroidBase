@@ -1,4 +1,4 @@
-package com.betterzhang.common.network;
+package com.betterzhang.common.http;
 
 import okhttp3.Interceptor;
 import retrofit2.Retrofit;

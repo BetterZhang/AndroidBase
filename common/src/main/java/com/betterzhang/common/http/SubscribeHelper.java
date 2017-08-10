@@ -1,4 +1,4 @@
-package com.betterzhang.common.network;
+package com.betterzhang.common.http;
 
 import java.net.ConnectException;
 import java.net.SocketException;

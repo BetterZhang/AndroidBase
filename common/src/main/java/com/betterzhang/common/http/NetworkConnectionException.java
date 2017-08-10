@@ -1,4 +1,4 @@
-package com.betterzhang.common.network;
+package com.betterzhang.common.http;
 
 /**
  * Created by Android Studio.

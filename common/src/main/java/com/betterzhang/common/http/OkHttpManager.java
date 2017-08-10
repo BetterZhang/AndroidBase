@@ -1,7 +1,7 @@
-package com.betterzhang.common.network;
+package com.betterzhang.common.http;
 
 import com.betterzhang.common.app.BaseApplication;
-import com.betterzhang.common.network.interceptor.CacheInterceptor;
+import com.betterzhang.common.http.interceptor.CacheInterceptor;
 import com.betterzhang.common.util.FileUtil;
 import okhttp3.Cache;
 import okhttp3.Interceptor;

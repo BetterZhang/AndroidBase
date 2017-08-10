@@ -1,6 +1,6 @@
 package com.betterzhang.puer.service;
 
-import com.betterzhang.common.network.HttpResult;
+import com.betterzhang.common.http.HttpResult;
 import java.util.HashMap;
 import io.reactivex.Observable;
 import retrofit2.http.Body;
