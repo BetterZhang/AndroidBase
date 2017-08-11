@@ -8,7 +8,6 @@ import java.security.cert.Certificate;
 import java.security.cert.CertificateFactory;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.concurrent.TimeUnit;
 import javax.net.ssl.HostnameVerifier;
 import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
@@ -17,9 +16,7 @@ import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
 import javax.net.ssl.X509TrustManager;
-import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import okio.Buffer;
 
 /**
@@ -27,17 +24,13 @@ import okio.Buffer;
  * Author : zhangzhongqiang
  * Email  : betterzhang.dev@gmail.com
  * Time   : 2017/08/03 下午 4:31
- * Desc   : Connection
+ * Desc   : Https处理工具类
  */
-public class Connection {
-
-    private static final int CONNECT_TIMEOUT = 30;
-    private static final int WRITE_TIMEOUT = 20;
-    private static final int READ_TIMEOUT = 20;
+public class HttpsUtil {
 
     static Collection<? extends Certificate> dzInoutCert;
 
-    public static OkHttpClient.Builder getUnsafeOkHttpClient(Interceptor interceptor) {
+    public static OkHttpClient.Builder getUnsafeOkHttpClient() {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         try {
             X509TrustManager trustManager;
@@ -48,16 +41,7 @@ public class Connection {
             sslContext.init(null, new TrustManager[]{trustManager}, null);
             sslSocketFactory = sslContext.getSocketFactory();
 
-            HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
-            logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-
-            builder.connectTimeout(CONNECT_TIMEOUT, TimeUnit.SECONDS);
-            builder.readTimeout(WRITE_TIMEOUT, TimeUnit.SECONDS);
-            builder.writeTimeout(READ_TIMEOUT, TimeUnit.SECONDS);
             builder.sslSocketFactory(sslSocketFactory, trustManager);
-            builder.addInterceptor(logInterceptor);
-            builder.addInterceptor(interceptor);
-            builder.retryOnConnectionFailure(true);
             builder.hostnameVerifier(new HostnameVerifier() {
                 @Override
                 public boolean verify(String hostname, SSLSession session) {
@@ -102,7 +86,8 @@ public class Connection {
     static KeyStore newEmptyKeyStore(char[] password) throws GeneralSecurityException {
         try {
             KeyStore keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
-            InputStream in = null; // By convention, 'null' creates an empty key store.
+            // By convention, 'null' creates an empty key store.
+            InputStream in = null;
             keyStore.load(in, password);
             return keyStore;
         } catch (IOException e) {
@@ -112,10 +97,12 @@ public class Connection {
 
 
     static InputStream trustedCertificatesInputStream() {
-        // PEM files for root certificates of Comodo and Entrust. These two CAs are sufficient to view
-        // https://publicobject.com (Comodo) and https://squareup.com (Entrust). But they aren't
-        // sufficient to connect to most HTTPS sites including https://godaddy.com and https://visa.com.
-        // Typically developers will need to get a PEM file from their organization's TLS administrator.
+        /**
+         * PEM files for root certificates of Comodo and Entrust. These two CAs are sufficient to view
+         * https://publicobject.com (Comodo) and https://squareup.com (Entrust). But they aren't
+         * sufficient to connect to most HTTPS sites including https://godaddy.com and https://visa.com.
+         * Typically developers will need to get a PEM file from their organization's TLS administrator.
+         */
         final String DZ_INOUT_CERT = "-----BEGIN CERTIFICATE-----\n" +
                 "MIIDIjCCAgoCCQDLWBYrY5bbJDANBgkqhkiG9w0BAQsFADBTMQswCQYDVQQGEwJD\n" +
                 "TjETMBEGA1UECAwKU29tZS1TdGF0ZTEhMB8GA1UECgwYSW50ZXJuZXQgV2lkZ2l0\n" +

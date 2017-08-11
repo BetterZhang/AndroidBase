@@ -2,14 +2,12 @@ package com.betterzhang.puer.service;
 
 import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.common.http.RetrofitHelper;
+import com.betterzhang.common.http.RxHelper;
+import com.betterzhang.common.http.SubscribeHelper;
 import com.betterzhang.puer.domain.PuerUserVo;
 import java.io.IOException;
 import java.util.HashMap;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -39,34 +37,15 @@ public class PuerTradeService {
 
     public void puerLogin(HashMap<String, String> params) {
         PuerTradeApi api = RetrofitHelper.getInstance().createApi(PuerTradeApi.class, PuerTradeApi.URL_PUER_TRADE, new PuerHeaderInterceptor(), false);
-//        api.puerLogin(params).compose(RxHelper.rxSchedulerHelper())
-//                .doOnNext(RxHelper.handleResult())
-//                .subscribe(new Consumer<PuerUserVo>() {
-//
-//                });
-        api.puerLogin(params).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<HttpResult<PuerUserVo>>() {
+        api.puerLogin(params).compose(RxHelper.<HttpResult<PuerUserVo>>rxSchedulerHelper())
+                .compose(RxHelper.<PuerUserVo>handleResult())
+                .subscribe(new SubscribeHelper<PuerUserVo>() {
                     @Override
-                    public void onSubscribe(@NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@NonNull HttpResult<PuerUserVo> result) {
-                        System.out.println("aaaaaaaaaaaaaaaaaaaaaaaa");
-                    }
-
-                    @Override
-                    public void onError(@NonNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
+                    public void onNext(@NonNull PuerUserVo vo) {
+                        super.onNext(vo);
                     }
                 });
+
     }
 
     /**

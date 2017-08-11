@@ -46,9 +46,9 @@ public class RxHelper {
         return new ObservableTransformer<HttpResult<T>, T>() {
             @Override
             public ObservableSource<T> apply(@NonNull Observable<HttpResult<T>> upstream) {
-                return upstream.flatMap(new Function<HttpResult<T>, ObservableSource<T>>() {
+                return upstream.flatMap(new Function<HttpResult<T>, Observable<T>>() {
                     @Override
-                    public ObservableSource<T> apply(@NonNull HttpResult<T> result) throws Exception {
+                    public Observable<T> apply(@NonNull HttpResult<T> result) throws Exception {
                         if (result == null) {
                             return Observable.error(new NetworkConnectionException());
                         } else if (result.isSuccess()) {

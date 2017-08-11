@@ -2,6 +2,7 @@ package com.betterzhang.common.app;
 
 import android.app.Application;
 import android.content.Context;
+import com.betterzhang.common.util.AppUtils;
 
 /**
  * Created by Android Studio.
@@ -18,6 +19,12 @@ public class BaseApplication extends Application {
 
     {
         instance = this;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        AppUtils.syncIsDebug(getApplicationContext());
     }
 
     public static BaseApplication getInstance() {
