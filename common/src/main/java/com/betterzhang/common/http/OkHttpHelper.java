@@ -50,7 +50,11 @@ public class OkHttpHelper {
 
     public static OkHttpHelper getInstance(Interceptor headerInterceptor) {
         if (instance == null) {
-            instance = new OkHttpHelper(headerInterceptor);
+            synchronized (OkHttpHelper.class) {
+                if (instance == null) {
+                    instance = new OkHttpHelper(headerInterceptor);
+                }
+            }
         }
         return instance;
     }
