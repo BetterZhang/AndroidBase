@@ -4,10 +4,8 @@ import com.betterzhang.common.app.BaseApplication;
 import com.betterzhang.common.http.interceptor.CacheInterceptor;
 import com.betterzhang.common.util.AppUtils;
 import com.betterzhang.common.util.FileUtil;
-
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
-
 import okhttp3.Cache;
 import okhttp3.ConnectionSpec;
 import okhttp3.Interceptor;
@@ -31,7 +29,7 @@ public class OkHttpHelper {
     private static final int WRITE_TIMEOUT = 20;
     private static final int READ_TIMEOUT = 20;
 
-    public OkHttpHelper(Interceptor headerInterceptor) {
+    private OkHttpHelper(Interceptor headerInterceptor) {
         mOkHttpBuilder = HttpsUtil.getUnsafeOkHttpClient();
 
         HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor();
