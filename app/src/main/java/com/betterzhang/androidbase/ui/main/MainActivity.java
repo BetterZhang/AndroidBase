@@ -1,13 +1,9 @@
 package com.betterzhang.androidbase.ui.main;
 
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.view.KeyEvent;
-import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.TextView;
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
 import com.ashokvarma.bottomnavigation.BottomNavigationItem;
 import com.betterzhang.androidbase.R;
@@ -85,32 +81,36 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (KeyEvent.KEYCODE_BACK == keyCode) {
+            // 第一种退出App方式
             // 判断是否在两秒之内连续点击返回键，是则退出，否则不退出
-            if (System.currentTimeMillis() - exitTime > 2000) {
-                Snackbar snackbar = Snackbar.make(content, getString(R.string.text_exit_app), Snackbar.LENGTH_SHORT);
-                snackbar.setAction(getString(R.string.text_cancel), v -> exitTime = 0)
-                        .setActionTextColor(ContextCompat.getColor(this, R.color.common_tab_text_selected));
-                View snakebarView = snackbar.getView();
-                TextView textView = (TextView) snakebarView.findViewById(android.support.design.R.id.snackbar_text);
-                textView.setTextColor(getResources().getColor(R.color.white));
-                snackbar.show();
-                // 将系统当前的时间赋值给exitTime
-                exitTime = System.currentTimeMillis();
-            } else {
-                finish();
-                new Thread() {
-                    @Override
-                    public void run() {
-                        try {
-                            Thread.sleep(500);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                        System.exit(0);
-                    }
-                }.start();
-            }
-            return true;
+//            if (System.currentTimeMillis() - exitTime > 2000) {
+//                Snackbar snackbar = Snackbar.make(content, getString(R.string.text_exit_app), Snackbar.LENGTH_SHORT);
+//                snackbar.setAction(getString(R.string.text_cancel), v -> exitTime = 0)
+//                        .setActionTextColor(ContextCompat.getColor(this, R.color.common_tab_text_selected));
+//                View snakebarView = snackbar.getView();
+//                TextView textView = (TextView) snakebarView.findViewById(android.support.design.R.id.snackbar_text);
+//                textView.setTextColor(getResources().getColor(R.color.white));
+//                snackbar.show();
+//                // 将系统当前的时间赋值给exitTime
+//                exitTime = System.currentTimeMillis();
+//            } else {
+//                finish();
+//                new Thread() {
+//                    @Override
+//                    public void run() {
+//                        try {
+//                            Thread.sleep(500);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        System.exit(0);
+//                    }
+//                }.start();
+//            }
+//            return true;
+
+            // 第二种App退出方式
+            moveTaskToBack(true);
         }
         return super.onKeyDown(keyCode, event);
     }
