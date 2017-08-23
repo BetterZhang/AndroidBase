@@ -6,7 +6,7 @@
 
     <!-- 程序主色调 -->
     <color name="common_app_main_color">#FFFFFF</color>
-    <color name="common_background">#ECECEC</color>
+    <color name="common_background">#F2F2F2</color>
     <color name="common_item_background">#FFFFFF</color>
 
     <color name="common_text">#bd132b</color>
