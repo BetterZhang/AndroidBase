@@ -3,7 +3,6 @@ apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion       rootProject.ext.android.compileSdkVersion
-    buildToolsVersion       rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         minSdkVersion       rootProject.ext.android.minSdkVersion
@@ -23,43 +22,42 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testCompile rootProject.ext.dependencies["junit"]
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    testImplementation rootProject.ext.dependencies["junit"]
 
     // support library
-    compile rootProject.ext.dependencies['appcompat-v7']
-    compile rootProject.ext.dependencies['design']
-    compile rootProject.ext.dependencies['cardview-v7']
-    compile rootProject.ext.dependencies['recyclerview-v7']
-    compile rootProject.ext.dependencies['support-v4']
+    api rootProject.ext.dependencies['appcompat-v7']
+    api rootProject.ext.dependencies['design']
+    api rootProject.ext.dependencies['cardview-v7']
+    api rootProject.ext.dependencies['recyclerview-v7']
+    api rootProject.ext.dependencies['support-v4']
 
     // retrofit2
-    compile rootProject.ext.dependencies['retrofit']
-    compile rootProject.ext.dependencies['adapter-rxjava2']
-    compile rootProject.ext.dependencies['converter-gson']
+    api rootProject.ext.dependencies['retrofit']
+    api rootProject.ext.dependencies['adapter-rxjava2']
+    api rootProject.ext.dependencies['converter-gson']
 
     // logging-interceptor
-    compile rootProject.ext.dependencies['logging-interceptor']
+    api rootProject.ext.dependencies['logging-interceptor']
 
     // RxJava
-    compile rootProject.ext.dependencies['rxjava']
-    compile rootProject.ext.dependencies['rxandroid']
+    api rootProject.ext.dependencies['rxjava']
+    api rootProject.ext.dependencies['rxandroid']
 
     // RecyclerView
-    compile rootProject.ext.dependencies['recyclerViewAdapter']
+    api rootProject.ext.dependencies['recyclerViewAdapter']
 
     // glide
-    compile rootProject.ext.dependencies['glide']
+    api rootProject.ext.dependencies['glide']
     annotationProcessor rootProject.ext.dependencies['glide-compiler']
 
     // StatusBar
-    compile rootProject.ext.dependencies['statusbarutil']
+    api rootProject.ext.dependencies['statusbarutil']
 
     // butterknife
-    compile rootProject.ext.dependencies['butterknife']
+    api rootProject.ext.dependencies['butterknife']
     annotationProcessor rootProject.ext.dependencies['butterknife-compiler']
 
 }

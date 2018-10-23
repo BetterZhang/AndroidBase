@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
 
 def releaseTime() {
     return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
@@ -7,7 +6,6 @@ def releaseTime() {
 
 android {
     compileSdkVersion       rootProject.ext.android.compileSdkVersion
-    buildToolsVersion       rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
         applicationId       rootProject.ext.android.applicationId
@@ -54,16 +52,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile project(':puer')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':puer')
 
     // bottom-navigation-bar
-    compile rootProject.ext.dependencies['bottom-navigation-bar']
+    implementation rootProject.ext.dependencies['bottom-navigation-bar']
 
     // butterknife
-    compile rootProject.ext.dependencies['butterknife']
+    implementation rootProject.ext.dependencies['butterknife']
     annotationProcessor rootProject.ext.dependencies['butterknife-compiler']
 }
