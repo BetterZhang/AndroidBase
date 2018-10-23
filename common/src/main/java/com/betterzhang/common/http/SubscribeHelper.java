@@ -1,7 +1,9 @@
 package com.betterzhang.common.http;
 
 import java.net.ConnectException;
-import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+import java.text.ParseException;
 import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
@@ -31,13 +33,21 @@ public class SubscribeHelper<T> implements Observer<T> {
     public void onError(@NonNull Throwable e) {
         String msg = "";
         if (e instanceof ApiException) {
-            msg = "服务器异常";
-        } else if (e instanceof ConnectException) {
-            msg = "连接超时";
-        } else if (e instanceof SocketException) {
-            msg = "连接超时";
+            msg = e.getMessage();
+        } else if (e instanceof UnknownHostException) {
+            msg = "网络异常，请检查您的网络状态";
+        }
+        else if (e instanceof ConnectException) {
+            msg = "网络连接异常，请检查您的网络状态";
+        } else if (e instanceof SocketTimeoutException) {
+            msg = "网络连接超时，请检查您的网络状态，稍后重试";
         } else if (e instanceof HttpException) {
             msg = "请检查您的网络连接，稍后重试";
+        } else if (e instanceof ParseException) {
+            msg = "解析失败";
+        }
+        else {
+            msg = "未知错误";
         }
     }
 
