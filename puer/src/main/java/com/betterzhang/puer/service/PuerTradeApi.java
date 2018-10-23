@@ -17,7 +17,7 @@ import retrofit2.http.POST;
 
 public interface PuerTradeApi {
 
-    String URL_PUER_TRADE = "https://192.168.10.163";
+    String URL_PUER_TRADE = "https://appclient.jme.com:8093";
 
     /**
      * 普洱登录接口

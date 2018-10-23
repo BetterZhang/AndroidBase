@@ -37,7 +37,7 @@ public class PuerTradeService {
 
     public void puerLogin(HashMap<String, String> params) {
         PuerTradeApi api = RetrofitHelper.getInstance().createApi(PuerTradeApi.class, PuerTradeApi.URL_PUER_TRADE, new PuerHeaderInterceptor(), false);
-        api.puerLogin(params).compose(RxHelper.<HttpResult<PuerUserVo>>rxSchedulerHelper())
+        api.puerLogin(params).compose(RxHelper.<HttpResult<PuerUserVo>>switchObservableSchedulers())
                 .compose(RxHelper.<PuerUserVo>handleResult())
                 .subscribe(new SubscribeHelper<PuerUserVo>() {
                     @Override
