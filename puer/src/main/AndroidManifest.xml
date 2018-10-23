@@ -1,7 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-
-          package="com.betterzhang.puer"
->
+          package="com.betterzhang.puer">
 
     <application
         android:allowBackup="true"

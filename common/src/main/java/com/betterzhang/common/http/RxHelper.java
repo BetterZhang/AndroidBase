@@ -72,7 +72,7 @@ public class RxHelper {
     public static <T> Observable<T> createData(final T data) {
         return Observable.create(new ObservableOnSubscribe<T>() {
             @Override
-            public void subscribe(@NonNull ObservableEmitter<T> emitter) throws Exception {
+            public void subscribe(@NonNull ObservableEmitter<T> emitter) {
                 try {
                     emitter.onNext(data);
                     emitter.onComplete();
