@@ -14,27 +14,17 @@ public class HttpResult<T> {
 
     public static final String SUCCESS_CODE = "0";
 
-    // 返回的状态码
-    private String code;
-    // 返回的消息
-    private String msg;
+    // 响应数据头
+    private Head head;
     // 返回的数据体
     private T body;
 
-    public String getCode() {
-        return code;
+    public Head getHead() {
+        return head;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
+    public void setHead(Head head) {
+        this.head = head;
     }
 
     public T getBody() {
@@ -50,7 +40,7 @@ public class HttpResult<T> {
     }
 
     public boolean isSuccess() {
-        if (this.code.equals(SUCCESS_CODE))
+        if (this.head.getCode().equals(SUCCESS_CODE))
             return true;
         else
             return false;

@@ -80,7 +80,7 @@ public class RxHelper {
                         } else if (result.isSuccess()) {
                             return createData(result.getBody());
                         } else {
-                            return Observable.error(new ApiException(result.getCode(), result.getMsg()));
+                            return Observable.error(new ApiException(result.getHead().getCode(), result.getHead().getMsg()));
                         }
                     }
                 });
