@@ -13,6 +13,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Android Studio.
@@ -22,7 +23,7 @@ import butterknife.ButterKnife;
  * Desc   : Activity基类
  */
 
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivity implements IView {
 
     public static final int INSTANT_IN = 0;
     public static final int INSTANT_OUT = 0;
@@ -32,19 +33,32 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected ProgressDialog mDialog;
     protected ToolbarHelper mToolbarHelper;
 
+    protected T mPresenter;
+    private Unbinder mUnbinder;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         overridePendingTransition(INSTANT_IN, INSTANT_OUT);
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutResId());
+
+        int layoutResID = getLayoutResId();
+        if (layoutResID != 0) {
+            setContentView(layoutResID);
+            mUnbinder = ButterKnife.bind(this);
+        }
         mContext = this;
+
+        mPresenter = createPresenter();
+        if (null == mPresenter) {
+            throw new IllegalStateException("Please call createPresenter in BaseActivity to create mPresenter!");
+        } else {
+            mPresenter.attachView(this);
+        }
 
         mDialog = new ProgressDialog(this);
         mDialog.setIndeterminate(true);
         mDialog.setMessage("请稍后...");
         mDialog.setCanceledOnTouchOutside(true);
-
-        ButterKnife.bind(this);
 
         initView();
         loadData(savedInstanceState);
@@ -53,10 +67,15 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     /**
      * 设置页面布局layout
-     *
      * @return
      */
     protected abstract int getLayoutResId();
+
+    /**
+     * 创建Presenter实例
+     * @return
+     */
+    protected abstract T createPresenter();
 
     /**
      * 绑定页面UI
@@ -68,7 +87,7 @@ public abstract class BaseActivity extends AppCompatActivity {
     /**
      * 加载数据
      */
-    protected void loadData(Bundle savedInstanceState) {
+    protected void loadData(@Nullable Bundle savedInstanceState) {
 
     }
 
@@ -302,5 +321,25 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void finish() {
         super.finish();
         overridePendingTransition(INSTANT_IN, INSTANT_OUT);
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != mPresenter) {
+            mPresenter.detachView();
+            mPresenter = null;
+        }
+        mUnbinder.unbind();
     }
 }

@@ -27,7 +27,7 @@ import butterknife.Unbinder;
  * Desc   : Fragment基类
  */
 
-public abstract class BaseFragment extends Fragment {
+public abstract class BaseFragment<T extends IPresenter> extends Fragment implements IView {
 
     protected Context mContext;
     protected AppCompatActivity mActivity;
@@ -35,7 +35,8 @@ public abstract class BaseFragment extends Fragment {
 
     protected ToolbarHelper mToolbarHelper;
 
-    protected Unbinder unbinder;
+    protected T mPresenter;
+    private Unbinder mUnbinder;
 
     @Override
     public void onAttach(Context context) {
@@ -53,16 +54,20 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        int id = getLayoutResId();
-        View view = inflater.inflate(id, container, false);
-        unbinder = ButterKnife.bind(this, view);
-        return view;
+        return inflater.inflate(getLayoutResId(), null);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setHasOptionsMenu(true);
+
+        mPresenter = createPresenter();
+        if (mPresenter != null) {
+            mPresenter.attachView(this);
+        }
+
+        mUnbinder = ButterKnife.bind(this, view);
     }
 
     @Override
@@ -75,10 +80,15 @@ public abstract class BaseFragment extends Fragment {
 
     /**
      * 设置页面布局layout
-     *
      * @return
      */
     protected abstract int getLayoutResId();
+
+    /**
+     * 创建Presenter实例
+     * @return
+     */
+    protected abstract T createPresenter();
 
     /**
      * 绑定页面UI
@@ -90,7 +100,7 @@ public abstract class BaseFragment extends Fragment {
     /**
      * 加载数据
      */
-    protected void loadData(Bundle savedInstanceState) {
+    protected void loadData(@Nullable Bundle savedInstanceState) {
 
     }
 
@@ -104,7 +114,16 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
+        mUnbinder.unbind();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
+            mPresenter = null;
+        }
     }
 
     // ************** Toolbar Setting start **************

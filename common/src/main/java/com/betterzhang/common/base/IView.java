@@ -13,6 +13,6 @@ public interface IView {
 
     void hideLoading();
 
-    void showMessage(String msg);
+//    void showMessage(String msg);
 
 }
