@@ -1,4 +1,4 @@
-package com.betterzhang.common.ui.base;
+package com.betterzhang.common.base;
 
 import android.content.Context;
 import android.support.annotation.ColorInt;

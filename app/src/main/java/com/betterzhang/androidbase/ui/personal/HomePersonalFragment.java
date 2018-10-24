@@ -1,7 +1,7 @@
 package com.betterzhang.androidbase.ui.personal;
 
 import com.betterzhang.androidbase.R;
-import com.betterzhang.common.ui.base.BaseFragment;
+import com.betterzhang.common.base.BaseFragment;
 import com.betterzhang.puer.ui.activity.PuerLoginActivity;
 import butterknife.OnClick;
 

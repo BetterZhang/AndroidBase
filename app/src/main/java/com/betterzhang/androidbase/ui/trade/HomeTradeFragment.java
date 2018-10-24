@@ -1,7 +1,7 @@
 package com.betterzhang.androidbase.ui.trade;
 
 import com.betterzhang.androidbase.R;
-import com.betterzhang.common.ui.base.BaseFragment;
+import com.betterzhang.common.base.BaseFragment;
 
 /**
  * Created by Android Studio.

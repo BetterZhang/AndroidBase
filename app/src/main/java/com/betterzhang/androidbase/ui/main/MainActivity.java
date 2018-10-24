@@ -10,7 +10,7 @@ import com.betterzhang.androidbase.R;
 import com.betterzhang.androidbase.ui.market.HomeMarketFragment;
 import com.betterzhang.androidbase.ui.personal.HomePersonalFragment;
 import com.betterzhang.androidbase.ui.trade.HomeTradeFragment;
-import com.betterzhang.common.ui.base.BaseActivity;
+import com.betterzhang.common.base.BaseActivity;
 import butterknife.BindView;
 
 /**
