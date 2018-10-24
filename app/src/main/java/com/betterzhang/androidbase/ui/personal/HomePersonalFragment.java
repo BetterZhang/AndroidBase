@@ -2,6 +2,7 @@ package com.betterzhang.androidbase.ui.personal;
 
 import com.betterzhang.androidbase.R;
 import com.betterzhang.common.base.BaseFragment;
+import com.betterzhang.common.base.IPresenter;
 import com.betterzhang.puer.ui.activity.PuerLoginActivity;
 import butterknife.OnClick;
 
@@ -20,9 +21,23 @@ public class HomePersonalFragment extends BaseFragment {
         return R.layout.fragment_home_personal;
     }
 
+    @Override
+    protected IPresenter createPresenter() {
+        return null;
+    }
+
     @OnClick(R.id.btn)
     public void onClick() {
         startAnimActivity(PuerLoginActivity.class);
     }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
 }

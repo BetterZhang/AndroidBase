@@ -50,7 +50,8 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
 
         mPresenter = createPresenter();
         if (null == mPresenter) {
-            throw new IllegalStateException("Please call createPresenter in BaseActivity to create mPresenter!");
+            // TODO 暂时注释，后面需要把注释去掉
+//            throw new IllegalStateException("Please call createPresenter in BaseActivity to create mPresenter!");
         } else {
             mPresenter.attachView(this);
         }

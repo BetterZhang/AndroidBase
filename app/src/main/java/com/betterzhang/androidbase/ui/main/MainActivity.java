@@ -11,6 +11,7 @@ import com.betterzhang.androidbase.ui.market.HomeMarketFragment;
 import com.betterzhang.androidbase.ui.personal.HomePersonalFragment;
 import com.betterzhang.androidbase.ui.trade.HomeTradeFragment;
 import com.betterzhang.common.base.BaseActivity;
+import com.betterzhang.common.base.IPresenter;
 import butterknife.BindView;
 
 /**
@@ -38,6 +39,11 @@ public class MainActivity extends BaseActivity implements BottomNavigationBar.On
     @Override
     protected int getLayoutResId() {
         return R.layout.activity_main;
+    }
+
+    @Override
+    protected IPresenter createPresenter() {
+        return null;
     }
 
     @Override

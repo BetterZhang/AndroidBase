@@ -1,7 +1,7 @@
 package com.betterzhang.puer.service;
 
 import com.betterzhang.common.http.HttpResult;
-import com.betterzhang.puer.domain.PuerUserVo;
+import com.betterzhang.puer.model.PuerUserVo;
 import java.util.HashMap;
 import io.reactivex.Observable;
 import retrofit2.http.Body;

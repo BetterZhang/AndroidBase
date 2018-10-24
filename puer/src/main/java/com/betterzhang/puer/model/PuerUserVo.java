@@ -1,4 +1,4 @@
-package com.betterzhang.puer.domain;
+package com.betterzhang.puer.model;
 
 import java.io.Serializable;
 

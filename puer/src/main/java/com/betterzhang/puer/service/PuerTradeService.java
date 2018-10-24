@@ -4,7 +4,7 @@ import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.common.http.RetrofitHelper;
 import com.betterzhang.common.http.RxHelper;
 import com.betterzhang.common.http.SubscribeHelper;
-import com.betterzhang.puer.domain.PuerUserVo;
+import com.betterzhang.puer.model.PuerUserVo;
 import java.io.IOException;
 import java.util.HashMap;
 import io.reactivex.annotations.NonNull;
