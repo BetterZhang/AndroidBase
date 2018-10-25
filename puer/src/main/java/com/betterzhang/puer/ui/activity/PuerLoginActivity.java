@@ -1,15 +1,12 @@
 package com.betterzhang.puer.ui.activity;
 
 import android.support.v7.widget.AppCompatEditText;
-
 import com.betterzhang.common.base.BaseActivity;
 import com.betterzhang.puer.R;
 import com.betterzhang.puer.R2;
 import com.betterzhang.puer.contract.LoginContract;
 import com.betterzhang.puer.presenter.LoginPresenter;
-
 import java.util.HashMap;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 

@@ -27,7 +27,7 @@ import io.reactivex.schedulers.Schedulers;
 public class RxHelper {
 
     /**
-     * 统一rxjava线程处理
+     * 统一RxJava线程处理
      *
      * @param <T>
      * @return

@@ -40,7 +40,7 @@ public class HttpResult<T> {
     }
 
     public boolean isSuccess() {
-        if (this.head.getCode().equals(SUCCESS_CODE))
+        if (getHead().getCode().equals(SUCCESS_CODE))
             return true;
         else
             return false;
