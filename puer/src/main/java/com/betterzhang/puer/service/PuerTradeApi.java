@@ -3,7 +3,7 @@ package com.betterzhang.puer.service;
 import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.puer.model.PuerUserVo;
 import java.util.HashMap;
-import io.reactivex.Observable;
+import io.reactivex.Flowable;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
 
@@ -25,6 +25,6 @@ public interface PuerTradeApi {
      * @return
      */
     @POST("/puerapi/v2/account/loginv2")
-    Observable<HttpResult<PuerUserVo>> puerLogin(@Body HashMap<String, String> params);
+    Flowable<HttpResult<PuerUserVo>> puerLogin(@Body HashMap<String, String> params);
 
 }

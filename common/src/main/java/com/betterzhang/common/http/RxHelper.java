@@ -1,7 +1,10 @@
 package com.betterzhang.common.http;
 
 import org.reactivestreams.Publisher;
+import io.reactivex.BackpressureStrategy;
 import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.FlowableTransformer;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
@@ -68,7 +71,7 @@ public class RxHelper {
      * @param <T>
      * @return
      */
-    public static <T> ObservableTransformer<HttpResult<T>, T> handleResult() {
+    public static <T> ObservableTransformer<HttpResult<T>, T> handleObservableResult() {
         return new ObservableTransformer<HttpResult<T>, T>() {
             @Override
             public ObservableSource<T> apply(@NonNull Observable<HttpResult<T>> upstream) {
@@ -78,9 +81,29 @@ public class RxHelper {
                         if (result == null) {
                             return Observable.error(new NetworkConnectionException());
                         } else if (result.isSuccess()) {
-                            return createData(result.getBody());
+                            return createObservableData(result.getBody());
                         } else {
                             return Observable.error(new ApiException(result.getHead().getCode(), result.getHead().getMsg()));
+                        }
+                    }
+                });
+            }
+        };
+    }
+
+    public static <T> FlowableTransformer<HttpResult<T>, T> handleFlowableResult() {
+        return new FlowableTransformer<HttpResult<T>, T>() {
+            @Override
+            public Flowable<T> apply(Flowable<HttpResult<T>> upstream) {
+                return upstream.flatMap(new Function<HttpResult<T>, Flowable<T>>() {
+                    @Override
+                    public Flowable<T> apply(HttpResult<T> result) {
+                        if (result == null) {
+                            return Flowable.error(new NetworkConnectionException());
+                        } else if (result.isSuccess()) {
+                            return createFlowableData(result.getBody());
+                        } else {
+                            return Flowable.error(new ApiException(result.getHead().getCode(), result.getHead().getMsg()));
                         }
                     }
                 });
@@ -95,7 +118,7 @@ public class RxHelper {
      * @param <T>
      * @return
      */
-    public static <T> Observable<T> createData(final T data) {
+    public static <T> Observable<T> createObservableData(final T data) {
         return Observable.create(new ObservableOnSubscribe<T>() {
             @Override
             public void subscribe(@NonNull ObservableEmitter<T> emitter) {
@@ -107,6 +130,20 @@ public class RxHelper {
                 }
             }
         });
+    }
+
+    public static <T> Flowable<T> createFlowableData(final T data) {
+        return Flowable.create(new FlowableOnSubscribe<T>() {
+            @Override
+            public void subscribe(FlowableEmitter<T> emitter) {
+                try {
+                    emitter.onNext(data);
+                    emitter.onComplete();
+                } catch (Exception exception) {
+                    emitter.onError(exception);
+                }
+            }
+        }, BackpressureStrategy.BUFFER);
     }
 
 }

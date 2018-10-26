@@ -1,12 +1,12 @@
 package com.betterzhang.common.http;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
 import java.net.ConnectException;
 import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 import java.text.ParseException;
-import io.reactivex.Observer;
 import io.reactivex.annotations.NonNull;
-import io.reactivex.disposables.Disposable;
 import retrofit2.HttpException;
 
 /**
@@ -17,10 +17,10 @@ import retrofit2.HttpException;
  * Desc   : Subscribe工具类
  */
 
-public class SubscribeHelper<T> implements Observer<T> {
+public class SubscribeHelper<T> implements Subscriber<T> {
 
     @Override
-    public void onSubscribe(@NonNull Disposable d) {
+    public void onSubscribe(Subscription s) {
 
     }
 
