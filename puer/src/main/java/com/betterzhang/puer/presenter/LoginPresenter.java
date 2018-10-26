@@ -1,7 +1,11 @@
 package com.betterzhang.puer.presenter;
 
 import com.betterzhang.common.base.BasePresenter;
+import com.betterzhang.common.http.BaseSubscriber;
+import com.betterzhang.common.http.HttpResult;
+import com.betterzhang.common.http.RxHelper;
 import com.betterzhang.puer.contract.LoginContract;
+import com.betterzhang.puer.model.PuerUserVo;
 import com.betterzhang.puer.service.PuerTradeService;
 import java.util.HashMap;
 
@@ -16,7 +20,22 @@ public class LoginPresenter extends BasePresenter<LoginContract.View> implements
 
     @Override
     public void login(HashMap<String, String> params) {
-        PuerTradeService.getInstance().puerLogin(params);
+        addSubscription(PuerTradeService.getInstance().puerLogin(params)
+                .compose(RxHelper.<HttpResult<PuerUserVo>>switchFlowableSchedulers())
+                .compose(RxHelper.<PuerUserVo>handleFlowableResult())
+                .subscribeWith(new BaseSubscriber<PuerUserVo>(getView()) {
+                    @Override
+                    public void onNext(PuerUserVo result) {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        super.onError(t);
+                    }
+                })
+        );
+
     }
 
 }

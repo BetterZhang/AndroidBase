@@ -335,6 +335,11 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
     }
 
     @Override
+    public void showErrorMsg(String msg) {
+        showShortToast(msg);
+    }
+
+    @Override
     protected void onDestroy() {
         super.onDestroy();
         if (null != mPresenter) {

@@ -335,4 +335,18 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment implem
         startActivityForResult(intent, requestCode);
     }
 
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showErrorMsg(String msg) {
+        showShortToast(msg);
+    }
 }

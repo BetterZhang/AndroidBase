@@ -15,7 +15,7 @@ public class BasePresenter<V extends IView> implements IPresenter<V> {
 
     protected WeakReference<V> mView;
 
-    CompositeDisposable mDisposables;
+    protected CompositeDisposable mDisposables;
 
     public BasePresenter() {
 

@@ -8,37 +8,24 @@ package com.betterzhang.common.http;
  * Desc   : 错误处理
  */
 
-public class ApiException extends RuntimeException {
+public class ApiException extends Exception {
 
-    public static final String USER_NOT_EXIST = "1001";
-    public static final String WRONG_PASSWORD = "1002";
+    private String code;
 
-    public ApiException(String detailMessage) {
-        super(detailMessage);
+    public ApiException(String msg) {
+        super(msg);
     }
 
-    public ApiException(String resultCode, String resultMsg) {
-        this.getApiExceptionMessage(resultCode, resultMsg);
+    public ApiException(String code, String msg) {
+        super(msg);
+        this.code = code;
     }
 
-    public ApiException(Throwable throwable) {
-        super(throwable);
+    public String getCode() {
+        return code;
     }
 
-    private String getApiExceptionMessage(String code, String msg) {
-        String message = "";
-        switch (code) {
-            case USER_NOT_EXIST:
-                message = "该用户不存在";
-                break;
-            case WRONG_PASSWORD:
-                message = "密码错误";
-                break;
-            default:
-                message = msg;
-                break;
-        }
-        return message;
+    public void setCode(String code) {
+        this.code = code;
     }
-
 }

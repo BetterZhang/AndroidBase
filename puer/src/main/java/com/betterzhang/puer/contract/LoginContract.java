@@ -25,7 +25,7 @@ public interface LoginContract {
 
     }
 
-    interface Presenter extends IPresenter<View> {
+    interface Presenter extends IPresenter<LoginContract.View> {
 
         void login(HashMap<String, String> params);
 

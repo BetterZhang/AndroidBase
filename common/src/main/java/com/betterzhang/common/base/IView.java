@@ -13,4 +13,6 @@ public interface IView {
 
     void hideLoading();
 
+    void showErrorMsg(String msg);
+
 }

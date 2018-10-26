@@ -2,12 +2,10 @@ package com.betterzhang.puer.service;
 
 import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.common.http.RetrofitHelper;
-import com.betterzhang.common.http.RxHelper;
-import com.betterzhang.common.http.SubscribeHelper;
 import com.betterzhang.puer.model.PuerUserVo;
 import java.io.IOException;
 import java.util.HashMap;
-import io.reactivex.annotations.NonNull;
+import io.reactivex.Flowable;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -35,16 +33,8 @@ public class PuerTradeService {
         return instance;
     }
 
-    public void puerLogin(HashMap<String, String> params) {
-        PuerTradeApi api = RetrofitHelper.getInstance().createApi(PuerTradeApi.class, PuerTradeApi.URL_PUER_TRADE, new PuerHeaderInterceptor(), false);
-        api.puerLogin(params).compose(RxHelper.<HttpResult<PuerUserVo>>switchFlowableSchedulers())
-                .compose(RxHelper.<PuerUserVo>handleFlowableResult())
-                .subscribe(new SubscribeHelper<PuerUserVo>() {
-                    @Override
-                    public void onNext(@NonNull PuerUserVo vo) {
-                        super.onNext(vo);
-                    }
-                });
+    public Flowable<HttpResult<PuerUserVo>> puerLogin(HashMap<String, String> params) {
+        return this.getApi().puerLogin(params);
     }
 
     /**
@@ -63,6 +53,10 @@ public class PuerTradeService {
 
             return chain.proceed(request);
         }
+    }
+
+    public PuerTradeApi getApi() {
+        return RetrofitHelper.getInstance().createApi(PuerTradeApi.class, PuerTradeApi.URL_PUER_TRADE, new PuerHeaderInterceptor(), false);
     }
 
 }
