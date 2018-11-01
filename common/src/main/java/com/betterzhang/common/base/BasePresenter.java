@@ -1,5 +1,6 @@
 package com.betterzhang.common.base;
 
+import android.support.annotation.UiThread;
 import java.lang.ref.WeakReference;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
@@ -13,37 +14,38 @@ import io.reactivex.disposables.Disposable;
  */
 public class BasePresenter<V extends IView> implements IPresenter<V> {
 
-    protected WeakReference<V> mView;
+    protected WeakReference<V> mViewRef;
 
     protected CompositeDisposable mDisposables;
 
-    public BasePresenter() {
-
-    }
-
-    public BasePresenter(V rootView) {
-        this.mView = new WeakReference<>(rootView);
-    }
-
+    @UiThread
     @Override
     public void attachView(V view) {
-        if (mView == null) {
-            mView = new WeakReference<>(view);
-        }
+        mViewRef = new WeakReference<>(view);
     }
 
     @Override
     public void detachView() {
-        mView.clear();
-        mView = null;
-        dispose();
+        if (mViewRef != null) {
+            mViewRef.clear();
+            mViewRef = null;
+            dispose();
+        }
     }
 
+    @Override
+    public void destroy() {
+
+    }
+
+    @UiThread
     public V getView() {
-        if (mView != null) {
-            return mView.get();
-        }
-        return null;
+        return mViewRef == null ? null : mViewRef.get();
+    }
+
+    @UiThread
+    public boolean isViewAttached() {
+        return mViewRef != null && mViewRef.get() != null;
     }
 
     public void addSubscription(Disposable disposable) {
