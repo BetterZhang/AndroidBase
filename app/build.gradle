@@ -59,6 +59,5 @@ dependencies {
     implementation rootProject.ext.dependencies['bottom-navigation-bar']
 
     // butterknife
-    implementation rootProject.ext.dependencies['butterknife']
     annotationProcessor rootProject.ext.dependencies['butterknife-compiler']
 }

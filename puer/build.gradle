@@ -25,6 +25,5 @@ dependencies {
     api project(':common')
 
     // butterknife
-    api rootProject.ext.dependencies['butterknife']
     annotationProcessor rootProject.ext.dependencies['butterknife-compiler']
 }
