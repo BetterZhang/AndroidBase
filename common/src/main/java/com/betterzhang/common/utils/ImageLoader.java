@@ -1,4 +1,4 @@
-package com.betterzhang.common.util;
+package com.betterzhang.common.utils;
 
 import android.content.Context;
 import android.support.annotation.DrawableRes;

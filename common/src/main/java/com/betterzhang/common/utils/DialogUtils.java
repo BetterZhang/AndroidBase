@@ -1,4 +1,4 @@
-package com.betterzhang.common.util;
+package com.betterzhang.common.utils;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,7 +15,7 @@ import android.text.TextUtils;
  * Desc   : Dialog工具类
  */
 
-public class DialogUtil {
+public class DialogUtils {
 
     /***
      * 获取一个dialog

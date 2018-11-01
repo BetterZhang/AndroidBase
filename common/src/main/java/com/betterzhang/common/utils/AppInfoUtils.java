@@ -1,4 +1,4 @@
-package com.betterzhang.common.util;
+package com.betterzhang.common.utils;
 
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -12,7 +12,7 @@ import android.content.pm.PackageManager;
  * Desc   : description
  */
 
-public class AppInfoUtil {
+public class AppInfoUtils {
 
     /**
      * 获取版本号

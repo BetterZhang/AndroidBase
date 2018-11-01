@@ -1,4 +1,4 @@
-package com.betterzhang.common.util;
+package com.betterzhang.common.utils;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -20,7 +20,7 @@ import java.util.Enumeration;
  * Desc   : 网络状态获取工具类
  */
 
-public class NetworkUtil {
+public class NetworkUtils {
 
     public static int NET_CNNT_BAIDU_OK = 1;        // Network Available
     public static int NET_CNNT_BAIDU_TIMEOUT = 2;   // No NetworkAvailable

@@ -1,4 +1,4 @@
-package com.betterzhang.common.util;
+package com.betterzhang.common.utils;
 
 import android.content.Context;
 import android.content.res.Configuration;
@@ -12,7 +12,7 @@ import android.util.DisplayMetrics;
  * Desc   : Density工具类
  */
 
-public class DensityUtil {
+public class DensityUtils {
 
     private static DisplayMetrics sDisplayMetrics;
 
@@ -27,7 +27,7 @@ public class DensityUtil {
      */
     public static int dip2px(Context context, float dip) {
         float density = getDensity(context);
-        return (int) (dip * density + DensityUtil.DOT_FIVE);
+        return (int) (dip * density + DensityUtils.DOT_FIVE);
     }
 
     /**

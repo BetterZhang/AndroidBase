@@ -2,7 +2,7 @@ package com.betterzhang.common.app;
 
 import android.app.Application;
 import android.content.Context;
-import com.betterzhang.common.util.AppUtils;
+import com.betterzhang.common.utils.AppUtils;
 
 /**
  * Created by Android Studio.

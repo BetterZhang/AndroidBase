@@ -2,7 +2,7 @@ package com.betterzhang.common.http.interceptor;
 
 import android.content.Context;
 import android.util.Log;
-import com.betterzhang.common.util.NetworkUtil;
+import com.betterzhang.common.utils.NetworkUtils;
 import java.io.IOException;
 import okhttp3.CacheControl;
 import okhttp3.Interceptor;
@@ -28,7 +28,7 @@ public class CacheInterceptor implements Interceptor {
     @Override
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
-        if (NetworkUtil.isNetworkAvailable(context)) {
+        if (NetworkUtils.isNetworkAvailable(context)) {
             request = request.newBuilder()
                     .cacheControl(CacheControl.FORCE_NETWORK)
                     .build();
@@ -39,7 +39,7 @@ public class CacheInterceptor implements Interceptor {
         }
 
         Response response = chain.proceed(request);
-        if (NetworkUtil.isNetworkAvailable(context)) {
+        if (NetworkUtils.isNetworkAvailable(context)) {
             int maxAge = 60;    // 在线缓存在1分钟内可读取
             response = response.newBuilder()
                     .removeHeader("Pragma")

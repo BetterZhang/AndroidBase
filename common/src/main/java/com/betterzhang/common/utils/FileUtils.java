@@ -1,4 +1,4 @@
-package com.betterzhang.common.util;
+package com.betterzhang.common.utils;
 
 import android.content.Context;
 import android.os.Environment;
@@ -16,9 +16,9 @@ import java.math.BigDecimal;
  * Desc   : 文件操作工具类
  */
 
-public class FileUtil {
+public class FileUtils {
 
-    private FileUtil() {
+    private FileUtils() {
 
     }
 

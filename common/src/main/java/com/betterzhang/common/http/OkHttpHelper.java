@@ -2,8 +2,8 @@ package com.betterzhang.common.http;
 
 import com.betterzhang.common.app.BaseApplication;
 import com.betterzhang.common.http.interceptor.CacheInterceptor;
-import com.betterzhang.common.util.AppUtils;
-import com.betterzhang.common.util.FileUtil;
+import com.betterzhang.common.utils.AppUtils;
+import com.betterzhang.common.utils.FileUtils;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import okhttp3.Cache;
@@ -75,7 +75,7 @@ public class OkHttpHelper {
      */
     public OkHttpClient getCacheOkHttp() {
         return mOkHttpBuilder
-                .cache(new Cache(FileUtil.getCacheFile(BaseApplication.getContext(), "file_cache"), 1024 * 1024 * 100))
+                .cache(new Cache(FileUtils.getCacheFile(BaseApplication.getContext(), "file_cache"), 1024 * 1024 * 100))
                 .addInterceptor(new CacheInterceptor(BaseApplication.getContext()))
                 .build();
     }
