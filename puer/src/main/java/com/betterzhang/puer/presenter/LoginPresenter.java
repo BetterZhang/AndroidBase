@@ -5,7 +5,7 @@ import com.betterzhang.common.http.BaseSubscriber;
 import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.common.http.RxHelper;
 import com.betterzhang.puer.contract.LoginContract;
-import com.betterzhang.puer.model.PuerUserVo;
+import com.betterzhang.puer.bean.PuerUserVo;
 import com.betterzhang.puer.service.PuerTradeService;
 import java.util.HashMap;
 

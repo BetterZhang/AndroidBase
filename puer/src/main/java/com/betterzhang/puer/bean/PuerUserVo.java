@@ -1,4 +1,4 @@
-package com.betterzhang.puer.model;
+package com.betterzhang.puer.bean;
 
 import java.io.Serializable;
 

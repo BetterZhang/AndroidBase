@@ -2,7 +2,7 @@ package com.betterzhang.puer.service;
 
 import com.betterzhang.common.http.HttpResult;
 import com.betterzhang.common.http.RetrofitHelper;
-import com.betterzhang.puer.model.PuerUserVo;
+import com.betterzhang.puer.bean.PuerUserVo;
 import java.io.IOException;
 import java.util.HashMap;
 import io.reactivex.Flowable;
