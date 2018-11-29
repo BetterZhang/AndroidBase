@@ -43,7 +43,7 @@ public abstract class BaseSubscriber<T> extends ResourceSubscriber<T> {
             return;
 
         String msg = "";
-        if (TextUtils.isEmpty(mErrorMsg)) {
+        if (!TextUtils.isEmpty(mErrorMsg)) {
             msg = mErrorMsg;
         } else if (t instanceof ApiException) {
             msg = t.getMessage();
